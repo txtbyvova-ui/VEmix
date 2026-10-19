@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Generated audio / outputs (never commit music)
+*.mp3
+*.wav
+*.flac
+*.m4a
+output/
+normalized/
+.veg_mix_*/
+veg_analysis_cache*.json
+bpm_cache.json
+*.corrupt-*
+
+# keep the example QC report
+!examples/**

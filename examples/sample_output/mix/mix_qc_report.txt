@@ -1,0 +1,114 @@
+VEgroove Audio QC
+
+Tracks processed: 10
+Tracks passed: 5
+Tracks failed: 0
+Tracks requiring review: 5
+
+Target LUFS: -16.0
+Measured LUFS range: -30.7 .. -15.8 LUFS
+Maximum measured True Peak: -2.18 dBTP
+
+Excluded tracks: 3
+Unknown metadata: 5
+Suspicious energy transitions: 5
+Silence warnings: 0
+
+Overall status: WARNING
+
+Mode: mix    Generated: 2026-10-19T20:43:20+00:00
+True-peak target: -1.5 dBTP
+
+Continuous mix
+--------------
+File: mix.mp3  (manifest mix.manifest.json)
+Published: yes (final normalization status: passed)
+Duration: decoded 662.05 s (0:11:02), expected 662.05 s
+Final mix loudness: -16.00 LUFS, true peak -2.18 dBTP, LRA 2.8 LU, sample peak -2.55 dBFS
+Clipped samples (decoded MP3): 0
+  body #1: 0:00:00 - 0:01:03: -15.9 LUFS, TP -8.47 dBTP
+  body #2: 0:01:09 - 0:02:07: -15.8 LUFS, TP -7.20 dBTP
+  body #3: 0:02:13 - 0:03:14: -15.9 LUFS, TP -7.40 dBTP
+  body #4: 0:03:17 - 0:04:20: -15.9 LUFS, TP -7.50 dBTP
+  body #5: 0:04:23 - 0:05:27: -15.9 LUFS, TP -7.80 dBTP
+  body #6: 0:05:30 - 0:06:33: -15.9 LUFS, TP -4.60 dBTP
+  body #7: 0:06:36 - 0:07:40: -16.0 LUFS, TP -3.79 dBTP
+  body #8: 0:07:43 - 0:08:47: -15.9 LUFS, TP -6.88 dBTP
+  body #9: 0:08:50 - 0:09:52: -30.7 LUFS, TP -2.20 dBTP
+  body #10: 0:09:55 - 0:11:02: -15.9 LUFS, TP -7.30 dBTP
+
+Tracks
+---------------------------------------------------------------------------------------------------------
+   #  File                                         Orig LUFS Final LUFS  Orig TP Final TP   Dur s  Status
+   1  Demo Aurora - Paper Boats                        -10.9      -15.9    -3.20    -8.47    69.8  passed
+   2  Demo Harbor - Window Seat                        -10.8      -15.8    -1.80    -7.20    69.7  review
+      - WARNING: #2 (starts 0:01:03 (63.8 s)) is flagged for review: editorial: not yet approved by curator
+   3  Demo Delta - Lemon Tree Cafe                     -12.5      -15.9    -3.80    -7.40    69.7  review
+      - WARNING: #3 (starts 0:02:07 (127.5 s)) is flagged for review: editorial: not yet approved by curator
+   4  Demo Coral - Weekend Drive                        -5.6      -15.9     2.90    -7.50    69.7  passed
+   5  Demo Harbor - City Walk                           -8.5      -15.9    -0.10    -7.80    69.5  passed
+   6  Demo Echo - Slow Sunday                          -23.8      -15.9   -12.26    -4.60    69.5  review
+      - WARNING: #6 (starts 0:05:27 (327.4 s)) is flagged for review: editorial: not yet approved by curator
+   7  Demo Field - Drone Study No. 3                   -18.6      -16.0    -6.26    -3.79    69.7  review
+      - WARNING: #7 (starts 0:06:33 (393.9 s)) is flagged for review: editorial: language unknown — needs curator review (not assumed to be English); editorial: not yet approved by curator
+   8  Demo Aurora - Morning Glow                       -18.5      -15.9    -9.20    -6.88    69.5  passed
+   9  Demo Quiet - Click Garden                        -28.0      -30.7     0.50    -2.20    68.2  review
+      - WARNING: #9 (starts 0:08:47 (527.0 s)) is flagged for review: loudness review during normalization: integrated loudness -30.6 LUFS is 14.6 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review; editorial: not yet approved by curator
+      - WARNING: #9 plays at -30.7 LUFS inside the mix (-14.7 LU vs -16.0 LUFS) from 0:08:50 (530.0 s)
+  10  Demo Coral - Neon Avenue                          -4.3      -15.9     4.50    -7.30    69.8  passed
+
+Issues
+------
+WARNING source_analysis_failed: library file 'Demo Broken - Corrupt File.mp3' could not be analysed and was left out: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+WARNING suspicious_energy_transition [#4]: transition #3 -> #4 flagged by the sequencer: energy jump +0.28 (0.47 -> 0.75) exceeds 0.20; harmonic clash 1A -> 6A
+WARNING suspicious_energy_transition [#5]: transition #4 -> #5 flagged by the sequencer: energy jump -0.25 (0.75 -> 0.50) exceeds 0.20; low transition score 0.27; harmonic clash 6A -> 9B
+WARNING suspicious_energy_transition [#7]: transition #6 -> #7 flagged by the sequencer: energy jump -0.22 (0.32 -> 0.10) exceeds 0.20; genre change soft-pop -> experimental
+WARNING flagged_transition [#8]: transition #7 -> #8 flagged by the sequencer: low transition score 0.24; mood change dark -> calm; genre change experimental -> pop
+WARNING suspicious_energy_transition [#9]: transition #8 -> #9 flagged by the sequencer: energy jump +0.29 (0.25 -> 0.54) exceeds 0.20
+WARNING suspicious_energy_transition [#10]: transition #9 -> #10 flagged by the sequencer: energy jump +0.31 (0.54 -> 0.85) exceeds the hard limit 0.30 — no alternative found; tempo jump 172 -> 123 BPM
+WARNING requires_review [#2, 0:01:03 (63.8 s)]: #2 (starts 0:01:03 (63.8 s)) is flagged for review: editorial: not yet approved by curator
+WARNING requires_review [#3, 0:02:07 (127.5 s)]: #3 (starts 0:02:07 (127.5 s)) is flagged for review: editorial: not yet approved by curator
+WARNING uncertain_transition [#4, 0:03:14 (194.2 s)]: transition into #4 at 0:03:14 (194.2 s) is marked uncertain: no beat/phrase alignment; tempo 99.4 vs 123 BPM (19% apart) — shortened to 3.0 s, listen
+WARNING uncertain_transition [#5, 0:04:20 (260.9 s)]: transition into #5 at 0:04:20 (260.9 s) is marked uncertain: no beat/phrase alignment; tempo 123 vs 112.3 BPM (9% apart) — shortened to 3.0 s, listen
+WARNING uncertain_transition [#6, 0:05:27 (327.4 s)]: transition into #6 at 0:05:27 (327.4 s) is marked uncertain: no beat/phrase alignment; tempo 112.3 vs 86.1 BPM (23% apart) — shortened to 3.0 s, listen
+WARNING requires_review [#6, 0:05:27 (327.4 s)]: #6 (starts 0:05:27 (327.4 s)) is flagged for review: editorial: not yet approved by curator
+WARNING uncertain_transition [#7, 0:06:33 (393.9 s)]: transition into #7 at 0:06:33 (393.9 s) is marked uncertain: no beat/phrase alignment; tempo 86.1 vs 69.8 BPM (19% apart) — shortened to 3.0 s, listen
+WARNING requires_review [#7, 0:06:33 (393.9 s)]: #7 (starts 0:06:33 (393.9 s)) is flagged for review: editorial: language unknown — needs curator review (not assumed to be English); editorial: not yet approved by curator
+WARNING uncertain_transition [#8, 0:07:40 (460.5 s)]: transition into #8 at 0:07:40 (460.5 s) is marked uncertain: no beat/phrase alignment; tempo 69.8 vs 92.3 BPM (24% apart) — shortened to 3.0 s, listen
+WARNING uncertain_transition [#9, 0:08:47 (527.0 s)]: transition into #9 at 0:08:47 (527.0 s) is marked uncertain: no beat/phrase alignment; tempo 92.3 vs 172.3 BPM (7% apart) — shortened to 3.0 s, listen
+WARNING requires_review [#9, 0:08:47 (527.0 s)]: #9 (starts 0:08:47 (527.0 s)) is flagged for review: loudness review during normalization: integrated loudness -30.6 LUFS is 14.6 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review; editorial: not yet approved by curator
+WARNING adjacent_loudness_jump [#9, 0:08:47 (527.0 s)]: transition #8 -> #9 at 0:08:47 (527.0 s): short-term loudness (p95) changes -19.9 LU between adjacent tracks; loudness jump at the boundary: outgoing tail -15.8 → incoming head -35.4 LUFS (-19.6 LU)
+WARNING segment_loudness_deviation [#9, 0:08:50 (530.0 s)]: #9 plays at -30.7 LUFS inside the mix (-14.7 LU vs -16.0 LUFS) from 0:08:50 (530.0 s)
+WARNING uncertain_transition [#10, 0:09:52 (592.3 s)]: transition into #10 at 0:09:52 (592.3 s) is marked uncertain: large energy difference 0.54 → 0.85 (|ΔE| 0.31 > 0.30) — overlap shortened to 3.0 s; no beat/phrase alignment; tempo 172.3 vs 123 BPM (29% apart) — shortened to 3.0 s, listen
+WARNING adjacent_loudness_jump [#10, 0:09:52 (592.3 s)]: transition #9 -> #10 at 0:09:52 (592.3 s): short-term loudness (p95) changes +19.8 LU between adjacent tracks; loudness jump at the boundary: outgoing tail -35.5 → incoming head -15.8 LUFS (+19.7 LU)
+INFO    unknown_metadata: 5 track(s) with unknown energy/mood/genre/language: #2, #3, #6, #7, #9
+INFO    silence_quiet_passage [#8, 0:08:49 (529.8 s)]: quiet passage (likely intentional): 63.0 s from 0:08:49 (529.8 s) to 0:09:52 (592.7 s), min level -62 dBFS, starts/ends near the transition at 0:08:50 (530.0 s) but extends into the track body (track #8, #9, #10)
+
+Flagged transitions
+-------------------
+#3 -> #4 [mix, renderer] at 0:03:14 (194.2 s): uncertain transition (no reliable phrase/beat alignment); no beat/phrase alignment; tempo 99.4 vs 123 BPM (19% apart) — shortened to 3.0 s, listen
+#4 -> #5 [mix, renderer] at 0:04:20 (260.9 s): uncertain transition (no reliable phrase/beat alignment); no beat/phrase alignment; tempo 123 vs 112.3 BPM (9% apart) — shortened to 3.0 s, listen
+#5 -> #6 [mix, renderer] at 0:05:27 (327.4 s): uncertain transition (no reliable phrase/beat alignment); no beat/phrase alignment; tempo 112.3 vs 86.1 BPM (23% apart) — shortened to 3.0 s, listen
+#6 -> #7 [mix, renderer] at 0:06:33 (393.9 s): uncertain transition (no reliable phrase/beat alignment); no beat/phrase alignment; tempo 86.1 vs 69.8 BPM (19% apart) — shortened to 3.0 s, listen
+#7 -> #8 [mix, renderer] at 0:07:40 (460.5 s): uncertain transition (no reliable phrase/beat alignment); no beat/phrase alignment; tempo 69.8 vs 92.3 BPM (24% apart) — shortened to 3.0 s, listen
+#8 -> #9 [mix, renderer] at 0:08:47 (527.0 s): uncertain transition (no reliable phrase/beat alignment); no beat/phrase alignment; tempo 92.3 vs 172.3 BPM (7% apart) — shortened to 3.0 s, listen
+#9 -> #10 [mix, renderer] at 0:09:52 (592.3 s): uncertain transition (no reliable phrase/beat alignment); large energy difference 0.54 → 0.85 (|ΔE| 0.31 > 0.30) — overlap shortened to 3.0 s; no beat/phrase alignment; tempo 172.3 vs 123 BPM (29% apart) — shortened to 3.0 s, listen
+#3 -> #4 [sequencing, manifest]: energy jump +0.28 (0.47 -> 0.75) exceeds 0.20; harmonic clash 1A -> 6A
+#4 -> #5 [sequencing, manifest]: energy jump -0.25 (0.75 -> 0.50) exceeds 0.20; low transition score 0.27; harmonic clash 6A -> 9B
+#6 -> #7 [sequencing, manifest]: energy jump -0.22 (0.32 -> 0.10) exceeds 0.20; genre change soft-pop -> experimental
+#7 -> #8 [sequencing, manifest]: low transition score 0.24; mood change dark -> calm; genre change experimental -> pop
+#8 -> #9 [sequencing, manifest]: energy jump +0.29 (0.25 -> 0.54) exceeds 0.20
+#9 -> #10 [sequencing, manifest]: energy jump +0.31 (0.54 -> 0.85) exceeds the hard limit 0.30 — no alternative found; tempo jump 172 -> 123 BPM
+
+Silence
+-------
+INFO    0:08:49 - 0:09:52 (529.8-592.7 s, 63.0 s) quiet_passage track #8, #9, #10: quiet passage (likely intentional): 63.0 s from 0:08:49 (529.8 s) to 0:09:52 (592.7 s), min level -62 dBFS, starts/ends near the transition at 0:08:50 (530.0 s) but extends into the track body
+
+Excluded tracks
+---------------
+Demo Mira - Night City.mp3 [curation]: language 'ru' is excluded by the client profile
+Демо Тест - Утренний трек.mp3 [curation]: Cyrillic script in artist/title; language unverified — excluded pending curator confirmation
+Demo Broken - Corrupt File.mp3 [analysis]: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+
+Checks run: manifest, loudness_targets, mix_published, mix_file, mix_file_integrity, mix_loudness, mix_true_peak, mix_duration, transition_timing, silence, clipping, peak_protection, tracklist_timestamps, duplicates, excluded_tracks, unpublished_tracks, metadata_coverage, flagged_transitions, segment_loudness, adjacent_short_term
+Checks skipped: profile_rules: no client profile supplied

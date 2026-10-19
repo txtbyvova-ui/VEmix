@@ -1,0 +1,30 @@
+VEgroove playlist: VEgroove - commercial_pop - afternoon
+Generated:  2026-10-19T20:42:18Z (veg_mixer 2.0.0)
+Profile:    commercial_pop
+Daypart:    afternoon
+Tracks:     3 in playlist, 0 failed normalization, 3 excluded, 1 not selected
+Duration:   0:03:30
+Targets:    -16.0 LUFS ±1.0 LU, true peak <= -1.5 dBTP (+0.2 dB tolerance); mp3 320k, 44100 Hz
+Note:       playlist.m3u8 is a playlist file; skipping, repeat and seeking are
+            provided by the player that opens it.
+
+   # |    Start | Length | Artist - Title               |   LUFS |     TP | Status  | Flags
+-------------------------------------------------------------------------------------------
+   1 |  0:00:00 |   1:10 | Demo Delta - Lemon Tree Cafe |  -16.0 |   -7.3 | passed  | metadata_review
+   2 |  0:01:10 |   1:10 | Demo Harbor - Window Seat    |  -16.0 |   -7.1 | passed  | metadata_review
+   3 |  0:02:20 |   1:10 | Demo Quiet - Click Garden    |  -30.1 |   -1.6 | review  | loudness_review, metadata_review, listen_transition
+
+=== FLAGGED TRANSITIONS (listening review) ===
+2 -> 3 [loudness]: short-term loudness (p95) changes -19.4 LU between adjacent tracks; loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU)
+2 -> 3 [sequencing]: tempo jump 103 -> 172 BPM; harmonic clash 6A -> 9B
+
+=== EXCLUDED ===
+- Demo Mira - Night City.mp3 [curation]: language 'ru' is excluded by the client profile
+- Демо Тест - Утренний трек.mp3 [curation]: Cyrillic script in artist/title; language unverified — excluded pending curator confirmation
+- Demo Broken - Corrupt File.mp3 [analysis]: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+
+=== NOT SELECTED (eligible, not placed in this playlist) ===
+- Demo Field - Drone Study No. 3.mp3: daypart 'afternoon' avoids tag 'experimental'
+
+=== WARNINGS ===
+- track 3 (Demo Quiet - Click Garden): loudness review — integrated loudness -30.1 LUFS is 14.1 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review

@@ -1,0 +1,180 @@
+# =============================================================================
+# VEgroove — профиль клиента (редакционные правила отбора и дейпарты)
+#
+# Этот файл редактирует куратор; Python трогать не нужно.
+#   python automix.py playlist --folder ./music --profile ./profiles/client.yaml --output ./output
+#
+# Профиль выражает РЕДАКЦИОННЫЕ ПРЕДПОЧТЕНИЯ. Он не скачивает и не «находит» музыку
+# и никогда не объявляет трек популярным/узнаваемым без данных куратора.
+#
+# Важно про синтаксис YAML:
+#   * отступы — пробелами (не табами);
+#   * опечатка в имени ключа — это ОШИБКА загрузки (программа подскажет верное имя),
+#     а не молча проигнорированная настройка;
+#   * значения yes/no/on/off без кавычек YAML читает как true/false — коды языков
+#     вроде норвежского пишите в кавычках: 'no';
+#   * значение, начинающееся с @, тоже пишите в кавычках: "@familiarity".
+#
+# Порядок применения правил (первое сработавшее решает):
+#   1) жёсткие: blocklist → excluded=true в метаданных куратора → язык из language.excluded
+#      (allowlist их НЕ отменяет). У трека может быть несколько языков ('ru;en'):
+#      достаточно ОДНОГО исключённого языка, чтобы трек был исключён;
+#   2) allowlist.only — если true, проходит только то, что есть в allowlist;
+#   3) мягкие: язык не из allowed (у многоязычного трека разрешены должны быть ВСЕ языки),
+#      неизвестный язык, кириллица при неизвестном языке, предпочтения со значением avoid,
+#      require_approved, manual_review_required.
+#      allowlist возвращает трек в выборку, но НЕ скрывает непроверенное: неизвестный язык,
+#      кириллица и «не одобрен куратором» остаются на треке пометкой «на проверку».
+# Флаг «на проверку» (review) трек не убирает: он остаётся в выборке с причиной в отчёте.
+# Пометки анализа (обрезанный файл, не найден темп/тональность и т.п.) тоже ставят флаг;
+# куратор снимает его, указав requires_review=false для трека в CSV.
+# =============================================================================
+
+client: commercial_pop
+description: >
+  Коммерческое пространство: узнаваемый международный поп, доступная мелодичная музыка,
+  ровное настроение без резких скачков энергии. Русскоязычные песни исключены.
+
+# -----------------------------------------------------------------------------
+# Язык (ISO 639-1, две строчные буквы: en, fr, es, it, de, ru, uk ...)
+# Язык трека берётся из метаданных куратора (CSV/JSON) или из тегов файла
+# (теги вида 'rus', 'Russian', 'rus;eng' приводятся к кодам ru / ru;en).
+# Неизвестный язык (и нераспознанное значение тега) НИКОГДА не считается английским.
+# -----------------------------------------------------------------------------
+language:
+  allowed: [en, fr, es, it]     # пусто = разрешён любой ИЗВЕСТНЫЙ язык
+  excluded: [ru]                # жёсткое исключение, allowlist его не отменяет
+  # Что делать с треком без известного языка:
+  #   review  — оставить, но пометить «на проверку» (по умолчанию)
+  #   exclude — исключить (allowlist может вернуть трек)
+  #   allow   — пропустить без пометки
+  unknown_policy: review
+  # Кириллица в исполнителе/названии при НЕИЗВЕСТНОМ языке — это лишь подсказка,
+  # не доказательство, что песня русская (может быть украинская, сербская ...):
+  #   exclude — исключить до подтверждения куратором (укажите language в CSV — и правило снимется)
+  #   review  — оставить, пометить «на проверку»
+  #   ignore  — не учитывать
+  # Кириллица при языке из ТЕГА файла, который не пишется кириллицей (например, 'en'),
+  # — противоречие: трек помечается «на проверку» (при exclude и review), пока куратор
+  # не укажет language в CSV.
+  cyrillic_script_policy: exclude
+
+# -----------------------------------------------------------------------------
+# Предпочтения: high | medium | low | avoid
+#   high   — бонус при отборе (+1)
+#   medium — нейтрально (0)
+#   low    — штраф при отборе (−0.6), трек НЕ исключается
+#   avoid  — трек исключается (мягкое правило: allowlist может вернуть)
+# Итоговая редакционная оценка трека — среднее по совпавшим предпочтениям (−1..+1).
+# Предпочтение с "@familiarity" участвует в среднем всегда: тег куратора (hit ...) — полный
+# вес, узнаваемость f от куратора — вес × (2f − 1), НЕИЗВЕСТНАЯ узнаваемость — 0 (нейтрально).
+# Поэтому трек с узнаваемостью от куратора выше 0.5 всегда стоит выше неоценённого.
+# -----------------------------------------------------------------------------
+preferences:
+  recognizable_pop: high
+  accessible_melodic_music: high
+  experimental_instrumental: low
+  aggressive_rap: low
+
+# Какие теги / жанры / настроения означают предпочтение. Сравнение без учёта регистра;
+# «hip-hop», «hip_hop» и «Hip Hop» — один и тот же тег. Сравниваются vibe_tags, genre и mood.
+#   "@familiarity" — использовать узнаваемость (familiarity 0..1), но ТОЛЬКО если её
+#   проставил куратор. Неизвестная узнаваемость считается нейтральной (0): она не делает
+#   трек «популярным» и не ставит его выше трека, который куратор отметил узнаваемым.
+# Предпочтение без строки здесь совпадает только с тегом, равным его имени.
+preference_tags:
+  recognizable_pop: ["@familiarity", recognizable, hit, well-known]
+  accessible_melodic_music: [melodic, accessible, catchy, soft pop, acoustic pop]
+  experimental_instrumental: [experimental, avant-garde, abstract, instrumental]
+  aggressive_rap: [aggressive rap, hardcore rap, drill, aggressive]
+
+# Ровность звучания и допустимые скачки энергии между соседними треками
+# (используются секвенсором): low | medium | high
+vibe_consistency: high
+energy_jumps: low
+
+# true — каждый не одобренный куратором трек (approved=true в CSV) помечается «на проверку».
+manual_review_required: true
+# true — не одобренные треки ИСКЛЮЧАЮТСЯ (строже, чем manual_review_required).
+require_approved: false
+
+# -----------------------------------------------------------------------------
+# Чёрный и белый списки.
+#   tracks  — относительный путь в библиотеке ("Evening/Artist - Title.mp3"),
+#             имя файла ("Artist - Title.mp3") или "Исполнитель - Название";
+#   artists — исполнитель (совпадает и в составе "A feat. B", "A & B", "A/B", "A x B", "A, B");
+#   tags    — тег, жанр или настроение.
+# -----------------------------------------------------------------------------
+blocklist:
+  tracks: []
+  #  - "Misc/Example Artist - Example Song.mp3"
+  artists: []
+  #  - "Example Artist"
+  tags: []
+  #  - explicit
+
+allowlist:
+  tracks: []
+  #  - "Example Artist - Approved Instrumental"
+  artists: []
+  tags: []
+  # true — в выборку попадает ТОЛЬКО то, что перечислено в allowlist
+  only: false
+
+# -----------------------------------------------------------------------------
+# Дейпарты. Числа — редакционная отправная точка, а не измерение; подстраивайте.
+# Не указанные здесь ключи берутся из встроенных значений по умолчанию.
+#   energy_range        [мин, макс] — энергия треков, допускаемых в блок (шкала 0..1)
+#   energy_curve        [в начале, в конце] — целевая энергия по ходу блока
+#   opening_tracks      сколько первых треков считаются «открытием»
+#   opening_max_energy  потолок энергии для открытия (null — без ограничения)
+#   bpm_range           [мин, макс] BPM или null — без ограничения
+#   preferred_tags / avoid_tags / preferred_moods / preferred_genres — списки
+#   target_duration_min длительность блока в минутах (null — по умолчанию CLI)
+#   max_tracks          максимум треков (null — без ограничения)
+# Можно добавить свой дейпарт (например, night:) с теми же ключами.
+# Имя дейпарта становится именем папки/суффиксом файла: без / \ : * ? " < > |,
+# не '.'/'..' (вместо '10:00-14:00' пишите '10-14' или 'midday').
+# -----------------------------------------------------------------------------
+dayparts:
+  morning:
+    description: Мягкая-умеренная энергия, доступная мелодичная музыка, без агрессивного начала.
+    energy_range: [0.15, 0.60]
+    energy_curve: [0.30, 0.50]
+    opening_tracks: 3
+    opening_max_energy: 0.40
+    bpm_range: null
+    preferred_tags: [melodic, accessible, acoustic, mellow, warm]
+    avoid_tags: [aggressive, harsh, heavy]
+    preferred_moods: [calm, warm, relaxed, uplifting, bright]
+    preferred_genres: [pop, acoustic pop, soft rock, singer-songwriter]
+    target_duration_min: null
+    max_tracks: null
+
+  afternoon:
+    description: Умеренная энергия, узнаваемый поп, ровная рабочая атмосфера.
+    energy_range: [0.30, 0.70]
+    energy_curve: [0.45, 0.55]
+    opening_tracks: 3
+    opening_max_energy: null
+    bpm_range: null
+    preferred_tags: [recognizable, pop, upbeat, feel-good, steady]
+    avoid_tags: [aggressive, harsh, experimental]
+    preferred_moods: [upbeat, positive, cheerful, steady]
+    preferred_genres: [pop, dance pop, indie pop, soft rock]
+    target_duration_min: null
+    max_tracks: null
+
+  evening:
+    description: Умеренная-повышенная энергия, больше грува и ритма, без резких смен стиля.
+    energy_range: [0.40, 0.85]
+    energy_curve: [0.50, 0.70]
+    opening_tracks: 3
+    opening_max_energy: 0.60
+    bpm_range: null
+    preferred_tags: [groove, rhythmic, funky, danceable]
+    avoid_tags: [harsh]
+    preferred_moods: [groovy, energetic, confident, warm]
+    preferred_genres: [funk, disco, nu-disco, dance pop, r&b, soul]
+    target_duration_min: null
+    max_tracks: null

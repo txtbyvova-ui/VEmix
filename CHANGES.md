@@ -1,4 +1,15 @@
-# CHANGES — automix.py refactor
+# CHANGES
+
+## Automix 2.0 (2026-10-19)
+
+Прототип переработан в пакет `veg_mixer` по ТЗ `ТЗ/task_01.md`: плейлист из отдельных
+нормализованных треков (EBU R128, проверка на MP3), редакционный отбор по профилю клиента,
+дейпарты, новый движок переходов, кэш с версиями, QC и отчёты. Исходный скрипт сохранён в
+`legacy/automix_v1.py`. Подробности — `docs/EXECUTION_REPORT.md`, `README.md`.
+
+---
+
+## v1 — automix.py refactor
 
 Structural cleanup, bug fixes, and footgun removal. **No audible/output behavior
 changed** except the two explicitly accepted items below (P1.3 tracklist text, P1.4
