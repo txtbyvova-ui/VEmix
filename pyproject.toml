@@ -1,0 +1,13 @@
+[project]
+name = "veg-mixer"
+version = "2.0.0"
+description = "VEgroove Automix 2.0: loudness-normalized playlists and continuous mixes"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "ffmpeg: integration test that runs the real ffmpeg/ffprobe binaries",
+    "slow: longer-running integration test",
+]
+addopts = "-ra"

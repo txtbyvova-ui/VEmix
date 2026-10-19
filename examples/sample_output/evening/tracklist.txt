@@ -1,0 +1,28 @@
+VEgroove playlist: VEgroove - commercial_pop - evening
+Generated:  2026-10-19T20:42:23Z (veg_mixer 2.0.0)
+Profile:    commercial_pop
+Daypart:    evening
+Tracks:     2 in playlist, 0 failed normalization, 3 excluded, 1 not selected
+Duration:   0:02:20
+Targets:    -16.0 LUFS ±1.0 LU, true peak <= -1.5 dBTP (+0.2 dB tolerance); mp3 320k, 44100 Hz
+Note:       playlist.m3u8 is a playlist file; skipping, repeat and seeking are
+            provided by the player that opens it.
+
+   # |    Start | Length | Artist - Title             |   LUFS |     TP | Status  | Flags
+-----------------------------------------------------------------------------------------
+   1 |  0:00:00 |   1:10 | Demo Coral - Neon Avenue   |  -16.0 |   -7.1 | passed  | 
+   2 |  0:01:10 |   1:10 | Demo Coral - Weekend Drive |  -16.0 |   -7.7 | passed  | listen_transition
+
+=== FLAGGED TRANSITIONS (listening review) ===
+1 -> 2 [sequencing]: same artist 'Demo Coral' with only 0 track(s) in between (minimum 2) — no alternative found; harmonic clash 9B -> 6A
+
+=== EXCLUDED ===
+- Demo Mira - Night City.mp3 [curation]: language 'ru' is excluded by the client profile
+- Демо Тест - Утренний трек.mp3 [curation]: Cyrillic script in artist/title; language unverified — excluded pending curator confirmation
+- Demo Broken - Corrupt File.mp3 [analysis]: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+
+=== NOT SELECTED (eligible, not placed in this playlist) ===
+- Demo Field - Drone Study No. 3.mp3: poor fit for every daypart (best selection score 0.34 < 0.40; here: fit 0.07; energy 0.10 below the evening range 0.40-0.85; no preferred tag/genre/mood (confident, dance pop, danceable, disco, energetic, funk, funky, groove, groovy, nu disco, r&b, rhythmic, soul, warm); editorial score -0.30)
+
+=== WARNINGS ===
+(none)

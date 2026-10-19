@@ -1,0 +1,154 @@
+{
+  "mode": "playlist",
+  "generated_at": "2026-10-19T20:43:18+00:00",
+  "status": "WARNING",
+  "target_lufs": -16.0,
+  "target_true_peak_dbtp": -1.5,
+  "tracks": [
+    {
+      "position": 1,
+      "file": "tracks/001_Demo_Coral_Neon_Avenue.mp3",
+      "source_rel": "Demo Coral - Neon Avenue.mp3",
+      "original_lufs": -4.35,
+      "final_lufs": -16.01,
+      "original_true_peak_dbtp": 4.5,
+      "final_true_peak_dbtp": -7.08,
+      "duration_s": 70.0,
+      "status": "passed",
+      "warnings": []
+    },
+    {
+      "position": 2,
+      "file": "tracks/002_Demo_Coral_Weekend_Drive.mp3",
+      "source_rel": "Demo Coral - Weekend Drive.mp3",
+      "original_lufs": -5.56,
+      "final_lufs": -16.02,
+      "original_true_peak_dbtp": 2.9,
+      "final_true_peak_dbtp": -7.66,
+      "duration_s": 70.0,
+      "status": "passed",
+      "warnings": []
+    }
+  ],
+  "issues": [
+    {
+      "severity": "WARNING",
+      "code": "source_analysis_failed",
+      "message": "library file 'Demo Broken - Corrupt File.mp3' could not be analysed and was left out: analysis failed: probe failed: ffprobe failed for <demo>\\demo_music\\Demo Broken - Corrupt File.mp3",
+      "track_position": null,
+      "timestamp_s": null,
+      "file": "Demo Broken - Corrupt File.mp3"
+    },
+    {
+      "severity": "INFO",
+      "code": "not_selected",
+      "message": "'Demo Field - Drone Study No. 3.mp3' was eligible but not selected: poor fit for every daypart (best selection score 0.34 < 0.40; here: fit 0.07; energy 0.10 below the evening range 0.40-0.85; no preferred tag/genre/mood (confident, dance pop, danceable, disco, energetic, funk, funky, groove, groovy, nu disco, r&b, rhythmic, soul, warm); editorial score -0.30)",
+      "track_position": null,
+      "timestamp_s": null,
+      "file": "Demo Field - Drone Study No. 3.mp3"
+    },
+    {
+      "severity": "WARNING",
+      "code": "flagged_transition",
+      "message": "transition #1 -> #2 flagged by the sequencer: same artist 'Demo Coral' with only 0 track(s) in between (minimum 2) — no alternative found; harmonic clash 9B -> 6A",
+      "track_position": 2,
+      "timestamp_s": null,
+      "file": null
+    }
+  ],
+  "checks_run": [
+    "manifest",
+    "loudness_targets",
+    "m3u8_syntax",
+    "tracklist_present",
+    "track_order",
+    "files_exist",
+    "paths_inside_output",
+    "files_decodable",
+    "nonzero_duration",
+    "loudness",
+    "true_peak",
+    "m3u8_durations",
+    "duplicates",
+    "excluded_tracks",
+    "unpublished_tracks",
+    "metadata_coverage",
+    "flagged_transitions",
+    "adjacent_short_term",
+    "orphan_files"
+  ],
+  "checks_skipped": [
+    "profile_rules: no client profile supplied"
+  ],
+  "excluded": [
+    {
+      "source_rel": "Demo Mira - Night City.mp3",
+      "stage": "curation",
+      "reasons": [
+        "language 'ru' is excluded by the client profile"
+      ]
+    },
+    {
+      "source_rel": "Демо Тест - Утренний трек.mp3",
+      "stage": "curation",
+      "reasons": [
+        "Cyrillic script in artist/title; language unverified — excluded pending curator confirmation"
+      ]
+    },
+    {
+      "source_rel": "Demo Broken - Corrupt File.mp3",
+      "stage": "analysis",
+      "reasons": [
+        "analysis failed: probe failed: ffprobe failed for <demo>\\demo_music\\Demo Broken - Corrupt File.mp3"
+      ]
+    }
+  ],
+  "flagged_transitions": [
+    {
+      "kind": "sequencing",
+      "from_index": 1,
+      "to_index": 2,
+      "from_track": "Demo Coral - Neon Avenue",
+      "to_track": "Demo Coral - Weekend Drive",
+      "reasons": [
+        "same artist 'Demo Coral' with only 0 track(s) in between (minimum 2) — no alternative found",
+        "harmonic clash 9B -> 6A"
+      ],
+      "score": 0.8096,
+      "source": "manifest"
+    }
+  ],
+  "silence_warnings": [],
+  "unknown_metadata": 0,
+  "summary": {
+    "mode": "playlist",
+    "tracks_processed": 2,
+    "tracks_passed": 2,
+    "tracks_failed": 0,
+    "tracks_requiring_review": 0,
+    "target_lufs": -16.0,
+    "target_true_peak_dbtp": -1.5,
+    "measured_lufs_min": -16.02,
+    "measured_lufs_max": -16.01,
+    "max_true_peak_dbtp": -7.08,
+    "excluded_tracks": 3,
+    "not_selected": 1,
+    "unknown_metadata": 0,
+    "suspicious_energy_transitions": 0,
+    "flagged_transitions": 1,
+    "silence_warnings": null,
+    "not_checked": [
+      "silence_warnings"
+    ],
+    "silence_info": 0,
+    "issues_by_severity": {
+      "INFO": 1,
+      "WARNING": 2,
+      "FAIL": 0
+    },
+    "checks_run": 19,
+    "checks_skipped": 1,
+    "overall_status": "WARNING"
+  },
+  "mix": null
+}

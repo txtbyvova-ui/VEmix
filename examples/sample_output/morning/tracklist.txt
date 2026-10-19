@@ -1,0 +1,30 @@
+VEgroove playlist: VEgroove - commercial_pop - morning
+Generated:  2026-10-19T20:42:15Z (veg_mixer 2.0.0)
+Profile:    commercial_pop
+Daypart:    morning
+Tracks:     4 in playlist, 0 failed normalization, 3 excluded, 1 not selected
+Duration:   0:04:40
+Targets:    -16.0 LUFS ±1.0 LU, true peak <= -1.5 dBTP (+0.2 dB tolerance); mp3 320k, 44100 Hz
+Note:       playlist.m3u8 is a playlist file; skipping, repeat and seeking are
+            provided by the player that opens it.
+
+   # |    Start | Length | Artist - Title             |   LUFS |     TP | Status  | Flags
+-----------------------------------------------------------------------------------------
+   1 |  0:00:00 |   1:10 | Demo Aurora - Morning Glow |  -16.0 |   -6.7 | passed  | 
+   2 |  0:01:10 |   1:10 | Demo Echo - Slow Sunday    |  -16.0 |   -4.5 | passed  | metadata_review
+   3 |  0:02:20 |   1:10 | Demo Aurora - Paper Boats  |  -16.0 |   -8.3 | passed  | listen_transition
+   4 |  0:03:30 |   1:10 | Demo Harbor - City Walk    |  -16.0 |   -7.8 | passed  | 
+
+=== FLAGGED TRANSITIONS (listening review) ===
+2 -> 3 [sequencing]: same artist 'Demo Aurora' with only 1 track(s) in between (minimum 2) — no alternative found while keeping the calm opening (first 3 track(s) at energy <= 0.40); harmonic clash 6A -> 9B
+
+=== EXCLUDED ===
+- Demo Mira - Night City.mp3 [curation]: language 'ru' is excluded by the client profile
+- Демо Тест - Утренний трек.mp3 [curation]: Cyrillic script in artist/title; language unverified — excluded pending curator confirmation
+- Demo Broken - Corrupt File.mp3 [analysis]: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+
+=== NOT SELECTED (eligible, not placed in this playlist) ===
+- Demo Field - Drone Study No. 3.mp3: poor fit for every daypart (best selection score 0.34 < 0.40; here: fit 0.34; energy 0.10 below the morning range 0.15-0.60; no preferred tag/genre/mood (accessible, acoustic, acoustic pop, bright, calm, mellow, melodic, pop, relaxed, singer songwriter, soft rock, uplifting, warm); editorial score -0.30)
+
+=== WARNINGS ===
+(none)

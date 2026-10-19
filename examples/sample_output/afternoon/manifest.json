@@ -1,0 +1,329 @@
+{
+  "generator": "veg_mixer 2.0.0",
+  "generated_at": "2026-10-19T20:42:18Z",
+  "mode": "playlist",
+  "profile": "commercial_pop",
+  "daypart": "afternoon",
+  "loudness_targets": {
+    "target_lufs": -16.0,
+    "target_true_peak_dbtp": -1.5,
+    "target_lra": 11.0,
+    "lufs_tolerance": 1.0,
+    "true_peak_tolerance_db": 0.2,
+    "codec": "mp3",
+    "encoder": "libmp3lame",
+    "bitrate": "320k",
+    "sample_rate": 44100,
+    "channels": 2
+  },
+  "tracks": [
+    {
+      "index": 1,
+      "file": "tracks/001_Demo_Delta_Lemon_Tree_Cafe.mp3",
+      "title": "Lemon Tree Cafe",
+      "artist": "Demo Delta",
+      "duration_s": 70.0,
+      "source_rel": "Demo Delta - Lemon Tree Cafe.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Delta - Lemon Tree Cafe.mp3",
+      "track_id": "72e0cc6af69a",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.0,
+        "true_peak_dbtp": -7.27,
+        "original_lufs": -12.53,
+        "original_true_peak_dbtp": -3.8,
+        "original_lra_lu": 2.1,
+        "final_lra_lu": 2.1,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "bpm": 99.38401442307692,
+        "camelot": "1A",
+        "key_confidence": 0.5571105599118519,
+        "energy": 0.472,
+        "energy_confidence": 0.4,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": null,
+        "vibe_tags": [],
+        "language": "es",
+        "familiarity": null,
+        "approved": false,
+        "requires_review": true,
+        "review_reasons": [
+          "not yet approved by curator"
+        ],
+        "script_hint": null,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "auto:energy-heuristic-v1"
+        },
+        "source_duration_s": 70.0,
+        "sequence_position": 1,
+        "daypart_fit": 0.8125,
+        "sequence_notes": []
+      },
+      "transition_in": null,
+      "flags": [
+        "metadata_review"
+      ]
+    },
+    {
+      "index": 2,
+      "file": "tracks/002_Demo_Harbor_Window_Seat.mp3",
+      "title": "Window Seat",
+      "artist": "Demo Harbor",
+      "duration_s": 70.0,
+      "source_rel": "Demo Harbor - Window Seat.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Harbor - Window Seat.mp3",
+      "track_id": "13453e150920",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.01,
+        "true_peak_dbtp": -7.07,
+        "original_lufs": -10.76,
+        "original_true_peak_dbtp": -1.8,
+        "original_lra_lu": 2.4,
+        "final_lra_lu": 2.4,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "bpm": 103.359375,
+        "camelot": "6A",
+        "key_confidence": 0.39363452229342893,
+        "energy": 0.492,
+        "energy_confidence": 0.4,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": null,
+        "vibe_tags": [],
+        "language": "fr",
+        "familiarity": null,
+        "approved": false,
+        "requires_review": true,
+        "review_reasons": [
+          "not yet approved by curator"
+        ],
+        "script_hint": null,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "auto:energy-heuristic-v1"
+        },
+        "source_duration_s": 70.0,
+        "sequence_position": 2,
+        "daypart_fit": 0.8125,
+        "sequence_notes": []
+      },
+      "transition_in": {
+        "total": 0.5877502795174481,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.9333333333333332,
+          "bpm_continuity": 0.7515399639423075,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 1.0
+        },
+        "coverage": 0.23783065778985132,
+        "flags": [
+          "harmonic_clash:1A->6A",
+          "unknown:vibe"
+        ],
+        "similarity": 0.8689611773894383
+      },
+      "flags": [
+        "metadata_review"
+      ]
+    },
+    {
+      "index": 3,
+      "file": "tracks/003_Demo_Quiet_Click_Garden.mp3",
+      "title": "Click Garden",
+      "artist": "Demo Quiet",
+      "duration_s": 70.0,
+      "source_rel": "Demo Quiet - Click Garden.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Quiet - Click Garden.mp3",
+      "track_id": "8ab779d5de2c",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -30.12,
+        "true_peak_dbtp": -1.6,
+        "original_lufs": -28.02,
+        "original_true_peak_dbtp": 0.5,
+        "original_lra_lu": 2.8,
+        "final_lra_lu": 2.8,
+        "normalization_status": "review",
+        "requires_review": true,
+        "processing_mode": "peak_limited_linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.45,
+        "encode_attempts": 2,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [
+          "target -16.0 LUFS needs +12.0 dB but the true peak (+0.5 dBTP) allows only -2.5 dB; reaching it would need ~14.6 dB of limiting (max allowed 0.0 dB) — delivering ~-30.6 LUFS peak-safe instead",
+          "closed-loop correction of +0.45 dB applied after measuring the output"
+        ],
+        "review_reasons": [
+          "integrated loudness -30.1 LUFS is 14.1 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review"
+        ],
+        "errors": []
+      },
+      "features": {
+        "bpm": 172.265625,
+        "camelot": "9B",
+        "key_confidence": 0.7507132317426571,
+        "energy": 0.539,
+        "energy_confidence": 0.4,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": null,
+        "vibe_tags": [],
+        "language": "en",
+        "familiarity": null,
+        "approved": false,
+        "requires_review": true,
+        "review_reasons": [
+          "not yet approved by curator"
+        ],
+        "script_hint": null,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "auto:energy-heuristic-v1"
+        },
+        "source_duration_s": 70.0,
+        "sequence_position": 3,
+        "daypart_fit": 0.8125,
+        "sequence_notes": []
+      },
+      "transition_in": {
+        "total": 0.5269670240462507,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.8433333333333332,
+          "bpm_continuity": 0.0,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 1.0
+        },
+        "coverage": 0.23783065778985132,
+        "flags": [
+          "tempo_jump:103->172",
+          "harmonic_clash:6A->9B",
+          "unknown:vibe"
+        ],
+        "similarity": 0.6133875014132073
+      },
+      "flags": [
+        "loudness_review",
+        "metadata_review",
+        "listen_transition"
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "source_rel": "Demo Mira - Night City.mp3",
+      "stage": "curation",
+      "reasons": [
+        "language 'ru' is excluded by the client profile"
+      ]
+    },
+    {
+      "source_rel": "Демо Тест - Утренний трек.mp3",
+      "stage": "curation",
+      "reasons": [
+        "Cyrillic script in artist/title; language unverified — excluded pending curator confirmation"
+      ]
+    },
+    {
+      "source_rel": "Demo Broken - Corrupt File.mp3",
+      "stage": "analysis",
+      "reasons": [
+        "analysis failed: probe failed: ffprobe failed for <demo>\\demo_music\\Demo Broken - Corrupt File.mp3"
+      ]
+    }
+  ],
+  "flagged_transitions": [
+    {
+      "kind": "loudness",
+      "from_index": 2,
+      "to_index": 3,
+      "reasons": [
+        "short-term loudness (p95) changes -19.4 LU between adjacent tracks",
+        "loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU)"
+      ]
+    },
+    {
+      "kind": "sequencing",
+      "from_index": 2,
+      "to_index": 3,
+      "from_track": "Demo Harbor - Window Seat",
+      "to_track": "Demo Quiet - Click Garden",
+      "reasons": [
+        "tempo jump 103 -> 172 BPM",
+        "harmonic clash 6A -> 9B"
+      ],
+      "score": 0.527
+    }
+  ],
+  "warnings": [
+    "track 3 (Demo Quiet - Click Garden): loudness review — integrated loudness -30.1 LUFS is 14.1 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review"
+  ],
+  "not_selected": [
+    {
+      "source_rel": "Demo Field - Drone Study No. 3.mp3",
+      "track_id": "6d3d5882c0c3",
+      "reason": "daypart 'afternoon' avoids tag 'experimental'"
+    }
+  ],
+  "leftover_files": [],
+  "mix": null,
+  "schema": "vegroove.manifest",
+  "schema_version": 1
+}

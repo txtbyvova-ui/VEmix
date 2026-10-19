@@ -1,0 +1,45 @@
+TRACKLIST: mix.mp3
+Generated: 2026-10-19 23:42
+Random seed: 2423945497
+Total duration: 0h 11m 02s
+Total tracks: 10
+
+#    | Time       | BPM    | Key   | Xfade  | FX             | Track
+-----|------------|--------|-------|--------|----------------|-------------------------------
+1    | 0:00:00    | 99.4   | 9B    | —      | —              | Demo Aurora - Paper Boats
+2    | 0:01:03    | 103.4  | 6A    | 6.0s   | clean          | Demo Harbor - Window Seat
+3    | 0:02:07    | 99.4   | 1A    | 6.0s   | clean          | Demo Delta - Lemon Tree Cafe
+4    | 0:03:14    | 123.0  | 6A    | 3.0s   | clean          | Demo Coral - Weekend Drive  [listen: uncertain transition]
+5    | 0:04:20    | 112.3  | 9B    | 3.0s   | clean          | Demo Harbor - City Walk  [listen: uncertain transition]
+6    | 0:05:27    | 86.1   | 6A    | 3.0s   | clean          | Demo Echo - Slow Sunday  [listen: uncertain transition]
+7    | 0:06:33    | 69.8   | 7B    | 3.0s   | clean          | Demo Field - Drone Study No. 3  [listen: uncertain transition]
+8    | 0:07:40    | 92.3   | 8B    | 3.0s   | clean          | Demo Aurora - Morning Glow  [listen: uncertain transition]
+9    | 0:08:47    | 172.3  | 9B    | 3.0s   | clean          | Demo Quiet - Click Garden  [listen: uncertain transition]
+10   | 0:09:52    | 123.0  | 9B    | 3.0s   | clean          | Demo Coral - Neon Avenue  [listen: uncertain transition]
+
+=== CAMELOT STATS ===
+Compatible transitions: 3/9 (33%)
+Incompatible transitions: 6/9
+Unknown key: 0/9
+
+=== FX SUMMARY ===
+clean: 9 (100%)
+filter_sweep: 0 (0%)
+echo_tail: 0 (0%)
+filter+echo: 0 (0%)
+Butt splices (no overlap): 0/9
+
+=== TRANSITIONS TO REVIEW (no beat/phrase alignment available) ===
+#3 → #4 at 0:03:14 (xfade 3.0s): no beat/phrase alignment; tempo 99.4 vs 123 BPM (19% apart) — shortened to 3.0 s, listen
+#4 → #5 at 0:04:20 (xfade 3.0s): no beat/phrase alignment; tempo 123 vs 112.3 BPM (9% apart) — shortened to 3.0 s, listen
+#5 → #6 at 0:05:27 (xfade 3.0s): no beat/phrase alignment; tempo 112.3 vs 86.1 BPM (23% apart) — shortened to 3.0 s, listen
+#6 → #7 at 0:06:33 (xfade 3.0s): no beat/phrase alignment; tempo 86.1 vs 69.8 BPM (19% apart) — shortened to 3.0 s, listen
+#7 → #8 at 0:07:40 (xfade 3.0s): no beat/phrase alignment; tempo 69.8 vs 92.3 BPM (24% apart) — shortened to 3.0 s, listen
+#8 → #9 at 0:08:47 (xfade 3.0s): no beat/phrase alignment; tempo 92.3 vs 172.3 BPM (7% apart) — shortened to 3.0 s, listen
+#9 → #10 at 0:09:52 (xfade 3.0s): large energy difference 0.54 → 0.85 (|ΔE| 0.31 > 0.30) — overlap shortened to 3.0 s; no beat/phrase alignment; tempo 172.3 vs 123 BPM (29% apart) — shortened to 3.0 s, listen
+
+=== PEAK PROTECTION ===
+Overlaps with true-peak overshoot corrected: 0/9
+Max overlap true peak after protection: -2.87 dBTP
+Rendered mix sample peak: -2.42 dBFS; clipped samples (|x| >= 0.999): 0
+Duration: rendered 662.050 s, expected 662.050 s (sum of trimmed tracks minus crossfades)

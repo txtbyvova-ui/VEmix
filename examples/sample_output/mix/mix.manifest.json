@@ -1,0 +1,1347 @@
+{
+  "generator": "veg_mixer 2.0.0",
+  "generated_at": "2026-10-19T20:42:56+00:00",
+  "mode": "mix",
+  "profile": "commercial_pop",
+  "daypart": null,
+  "loudness_targets": {
+    "target_lufs": -16.0,
+    "target_true_peak_dbtp": -1.5,
+    "target_lra": 11.0,
+    "lufs_tolerance": 1.0,
+    "true_peak_tolerance_db": 0.2,
+    "bitrate": "320k",
+    "sample_rate": 44100,
+    "channels": 2,
+    "codec": "libmp3lame"
+  },
+  "tracks": [
+    {
+      "index": 1,
+      "file": "",
+      "title": "Paper Boats",
+      "artist": "Demo Aurora",
+      "duration_s": 69.8,
+      "source_rel": "Demo Aurora - Paper Boats.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Aurora - Paper Boats.mp3",
+      "track_id": "30abd4701554",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.0,
+        "true_peak_dbtp": -8.3,
+        "original_lufs": -10.9,
+        "original_true_peak_dbtp": -3.2,
+        "original_lra_lu": 2.3,
+        "final_lra_lu": 2.3,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 99.38401442307692,
+        "camelot": "9B",
+        "key_confidence": 0.5004258995970469,
+        "energy": 0.35,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": "warm",
+        "vibe_tags": [
+          "melodic",
+          "recognizable"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "excluded": false,
+        "requires_review": false,
+        "rel_path": "Demo Aurora - Paper Boats.mp3",
+        "track_id": "30abd4701554",
+        "artist": "Demo Aurora",
+        "title": "Paper Boats",
+        "energy_confidence": 1.0,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual"
+        },
+        "review_reasons": [],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": null
+      },
+      "transition_in": null,
+      "flags": []
+    },
+    {
+      "index": 2,
+      "file": "",
+      "title": "Window Seat",
+      "artist": "Demo Harbor",
+      "duration_s": 69.7,
+      "source_rel": "Demo Harbor - Window Seat.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Harbor - Window Seat.mp3",
+      "track_id": "13453e150920",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.01,
+        "true_peak_dbtp": -7.08,
+        "original_lufs": -10.76,
+        "original_true_peak_dbtp": -1.8,
+        "original_lra_lu": 2.4,
+        "final_lra_lu": 2.4,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 103.359375,
+        "camelot": "6A",
+        "key_confidence": 0.39363452229342893,
+        "energy": 0.492,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": null,
+        "vibe_tags": [],
+        "language": "fr",
+        "familiarity": null,
+        "approved": false,
+        "excluded": false,
+        "requires_review": true,
+        "rel_path": "Demo Harbor - Window Seat.mp3",
+        "track_id": "13453e150920",
+        "artist": "Demo Harbor",
+        "title": "Window Seat",
+        "energy_confidence": 0.4,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "auto:energy-heuristic-v1"
+        },
+        "review_reasons": [
+          "not yet approved by curator"
+        ],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": null
+      },
+      "transition_in": {
+        "total": 0.5435873835898464,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.5266666666666666,
+          "bpm_continuity": 0.7515399639423075,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 1.0
+        },
+        "coverage": 0.23783065778985132,
+        "flags": [
+          "harmonic_clash:9B->6A",
+          "unknown:vibe"
+        ],
+        "similarity": 0.6832706682767552
+      },
+      "flags": [
+        "metadata_review"
+      ]
+    },
+    {
+      "index": 3,
+      "file": "",
+      "title": "Lemon Tree Cafe",
+      "artist": "Demo Delta",
+      "duration_s": 69.65,
+      "source_rel": "Demo Delta - Lemon Tree Cafe.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Delta - Lemon Tree Cafe.mp3",
+      "track_id": "72e0cc6af69a",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.0,
+        "true_peak_dbtp": -7.27,
+        "original_lufs": -12.53,
+        "original_true_peak_dbtp": -3.8,
+        "original_lra_lu": 2.1,
+        "final_lra_lu": 2.1,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 99.38401442307692,
+        "camelot": "1A",
+        "key_confidence": 0.5571105599118519,
+        "energy": 0.472,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": null,
+        "vibe_tags": [],
+        "language": "es",
+        "familiarity": null,
+        "approved": false,
+        "excluded": false,
+        "requires_review": true,
+        "rel_path": "Demo Delta - Lemon Tree Cafe.mp3",
+        "track_id": "72e0cc6af69a",
+        "artist": "Demo Delta",
+        "title": "Lemon Tree Cafe",
+        "energy_confidence": 0.4,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "auto:energy-heuristic-v1"
+        },
+        "review_reasons": [
+          "not yet approved by curator"
+        ],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": null
+      },
+      "transition_in": {
+        "total": 0.5877502795174481,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.9333333333333332,
+          "bpm_continuity": 0.7515399639423075,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 1.0
+        },
+        "coverage": 0.23783065778985132,
+        "flags": [
+          "harmonic_clash:6A->1A",
+          "unknown:vibe"
+        ],
+        "similarity": 0.8689611773894383
+      },
+      "flags": [
+        "metadata_review"
+      ]
+    },
+    {
+      "index": 4,
+      "file": "",
+      "title": "Weekend Drive",
+      "artist": "Demo Coral",
+      "duration_s": 69.7,
+      "source_rel": "Demo Coral - Weekend Drive.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Coral - Weekend Drive.mp3",
+      "track_id": "b83a41341d8b",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.0,
+        "true_peak_dbtp": -7.57,
+        "original_lufs": -5.56,
+        "original_true_peak_dbtp": 2.9,
+        "original_lra_lu": 1.9,
+        "final_lra_lu": 1.9,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 123.046875,
+        "camelot": "6A",
+        "key_confidence": 0.3987274797924659,
+        "energy": 0.75,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "dance-pop",
+        "mood": "energetic",
+        "vibe_tags": [
+          "groove",
+          "dance"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "excluded": false,
+        "requires_review": false,
+        "rel_path": "Demo Coral - Weekend Drive.mp3",
+        "track_id": "b83a41341d8b",
+        "artist": "Demo Coral",
+        "title": "Weekend Drive",
+        "energy_confidence": 1.0,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual"
+        },
+        "review_reasons": [],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": null
+      },
+      "transition_in": {
+        "total": 0.41600575113904725,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.07333333333333325,
+          "bpm_continuity": 0.0,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 0.5
+        },
+        "coverage": 0.23821474206579682,
+        "flags": [
+          "energy_jump:+0.28",
+          "tempo_jump:99->123",
+          "harmonic_clash:1A->6A",
+          "unknown:vibe"
+        ],
+        "similarity": 0.14740113003689406
+      },
+      "flags": []
+    },
+    {
+      "index": 5,
+      "file": "",
+      "title": "City Walk",
+      "artist": "Demo Harbor",
+      "duration_s": 69.55,
+      "source_rel": "Demo Harbor - City Walk.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Harbor - City Walk.mp3",
+      "track_id": "dcc4f53ef572",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.01,
+        "true_peak_dbtp": -7.6,
+        "original_lufs": -8.52,
+        "original_true_peak_dbtp": -0.1,
+        "original_lra_lu": 2.3,
+        "final_lra_lu": 2.3,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 112.34714673913044,
+        "camelot": "9B",
+        "key_confidence": 0.4062256419882816,
+        "energy": 0.5,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": "uplifting",
+        "vibe_tags": [
+          "recognizable"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "excluded": false,
+        "requires_review": false,
+        "rel_path": "Demo Harbor - City Walk.mp3",
+        "track_id": "dcc4f53ef572",
+        "artist": "Demo Harbor",
+        "title": "City Walk",
+        "energy_confidence": 1.0,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual"
+        },
+        "review_reasons": [],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": null
+      },
+      "transition_in": {
+        "total": 0.2749152749192952,
+        "components": {
+          "vibe_similarity": 0.21,
+          "energy_continuity": 0.16666666666666663,
+          "bpm_continuity": 0.33126698369565233,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 0.5
+        },
+        "coverage": 0.8128753755499597,
+        "flags": [
+          "energy_jump:-0.25",
+          "harmonic_clash:6A->9B"
+        ],
+        "similarity": 0.22310057377685813
+      },
+      "flags": []
+    },
+    {
+      "index": 6,
+      "file": "",
+      "title": "Slow Sunday",
+      "artist": "Demo Echo",
+      "duration_s": 69.45,
+      "source_rel": "Demo Echo - Slow Sunday.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Echo - Slow Sunday.mp3",
+      "track_id": "0e2ad0973266",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -15.99,
+        "true_peak_dbtp": -4.5,
+        "original_lufs": -23.75,
+        "original_true_peak_dbtp": -12.26,
+        "original_lra_lu": 2.2,
+        "final_lra_lu": 2.3,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 86.1328125,
+        "camelot": "6A",
+        "key_confidence": 0.6363675682074165,
+        "energy": 0.318,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "soft-pop",
+        "mood": null,
+        "vibe_tags": [],
+        "language": "it",
+        "familiarity": null,
+        "approved": false,
+        "excluded": false,
+        "requires_review": true,
+        "rel_path": "Demo Echo - Slow Sunday.mp3",
+        "track_id": "0e2ad0973266",
+        "artist": "Demo Echo",
+        "title": "Slow Sunday",
+        "energy_confidence": 0.4,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "auto:energy-heuristic-v1"
+        },
+        "review_reasons": [
+          "not yet approved by curator"
+        ],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": null
+      },
+      "transition_in": {
+        "total": 0.4504741462297028,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.3933333333333333,
+          "bpm_continuity": 0.0,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 0.5
+        },
+        "coverage": 0.2387802143279247,
+        "flags": [
+          "tempo_jump:112->86",
+          "harmonic_clash:9B->6A",
+          "unknown:vibe"
+        ],
+        "similarity": 0.29258811744644087
+      },
+      "flags": [
+        "metadata_review"
+      ]
+    },
+    {
+      "index": 7,
+      "file": "",
+      "title": "Drone Study No. 3",
+      "artist": "Demo Field",
+      "duration_s": 69.65,
+      "source_rel": "Demo Field - Drone Study No. 3.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Field - Drone Study No. 3.mp3",
+      "track_id": "6d3d5882c0c3",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.0,
+        "true_peak_dbtp": -3.67,
+        "original_lufs": -18.59,
+        "original_true_peak_dbtp": -6.26,
+        "original_lra_lu": 2.8,
+        "final_lra_lu": 2.8,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 69.83741554054055,
+        "camelot": "7B",
+        "key_confidence": 0.6597134787773081,
+        "energy": 0.1,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "experimental",
+        "mood": "dark",
+        "vibe_tags": [
+          "experimental",
+          "instrumental"
+        ],
+        "language": null,
+        "familiarity": null,
+        "approved": false,
+        "excluded": false,
+        "requires_review": true,
+        "rel_path": "Demo Field - Drone Study No. 3.mp3",
+        "track_id": "6d3d5882c0c3",
+        "artist": "Demo Field",
+        "title": "Drone Study No. 3",
+        "energy_confidence": 1.0,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual",
+          "notes": "manual"
+        },
+        "review_reasons": [
+          "language unknown — needs curator review (not assumed to be English)",
+          "not yet approved by curator"
+        ],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": "obscure"
+      },
+      "transition_in": {
+        "total": 0.4142986425339366,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.2733333333333333,
+          "bpm_continuity": 0.0,
+          "harmonic_compatibility": 0.5,
+          "genre_continuity": 0.0
+        },
+        "coverage": 0.256136317361042,
+        "flags": [
+          "energy_jump:-0.22",
+          "tempo_jump:86->70",
+          "unknown:vibe"
+        ],
+        "similarity": 0.16540723959398027
+      },
+      "flags": [
+        "metadata_review"
+      ]
+    },
+    {
+      "index": 8,
+      "file": "",
+      "title": "Morning Glow",
+      "artist": "Demo Aurora",
+      "duration_s": 69.55,
+      "source_rel": "Demo Aurora - Morning Glow.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Aurora - Morning Glow.mp3",
+      "track_id": "dab81f63dcb2",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.0,
+        "true_peak_dbtp": -6.7,
+        "original_lufs": -18.47,
+        "original_true_peak_dbtp": -9.2,
+        "original_lra_lu": 2.7,
+        "final_lra_lu": 2.6,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 92.28515625,
+        "camelot": "8B",
+        "key_confidence": 0.5361899274015608,
+        "energy": 0.25,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": "calm",
+        "vibe_tags": [
+          "melodic",
+          "acoustic"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "excluded": false,
+        "requires_review": false,
+        "rel_path": "Demo Aurora - Morning Glow.mp3",
+        "track_id": "dab81f63dcb2",
+        "artist": "Demo Aurora",
+        "title": "Morning Glow",
+        "energy_confidence": 1.0,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual",
+          "notes": "manual"
+        },
+        "review_reasons": [],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": "curated"
+      },
+      "transition_in": {
+        "total": 0.24193778006793215,
+        "components": {
+          "vibe_similarity": 0.0,
+          "energy_continuity": 0.5,
+          "bpm_continuity": 0.0,
+          "harmonic_compatibility": 1.0,
+          "genre_continuity": 0.0
+        },
+        "coverage": 0.8232420759729684,
+        "flags": [
+          "tempo_jump:70->92"
+        ],
+        "similarity": 0.18652936060505554
+      },
+      "flags": []
+    },
+    {
+      "index": 9,
+      "file": "",
+      "title": "Click Garden",
+      "artist": "Demo Quiet",
+      "duration_s": 68.25,
+      "source_rel": "Demo Quiet - Click Garden.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Quiet - Click Garden.mp3",
+      "track_id": "8ab779d5de2c",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -30.61,
+        "true_peak_dbtp": -2.06,
+        "original_lufs": -28.02,
+        "original_true_peak_dbtp": 0.5,
+        "original_lra_lu": 2.8,
+        "final_lra_lu": 2.8,
+        "normalization_status": "review",
+        "requires_review": true,
+        "processing_mode": "peak_limited_linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [
+          "target -16.0 LUFS needs +12.0 dB but the true peak (+0.5 dBTP) allows only -2.5 dB; reaching it would need ~14.6 dB of limiting (max allowed 0.0 dB) — delivering ~-30.6 LUFS peak-safe instead"
+        ],
+        "review_reasons": [
+          "integrated loudness -30.6 LUFS is 14.6 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review"
+        ],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 172.265625,
+        "camelot": "9B",
+        "key_confidence": 0.7507132317426571,
+        "energy": 0.539,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": null,
+        "vibe_tags": [],
+        "language": "en",
+        "familiarity": null,
+        "approved": false,
+        "excluded": false,
+        "requires_review": true,
+        "rel_path": "Demo Quiet - Click Garden.mp3",
+        "track_id": "8ab779d5de2c",
+        "artist": "Demo Quiet",
+        "title": "Click Garden",
+        "energy_confidence": 0.4,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "auto:energy-heuristic-v1"
+        },
+        "review_reasons": [
+          "not yet approved by curator"
+        ],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": null
+      },
+      "transition_in": {
+        "total": 0.46747785006227605,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.036666666666666514,
+          "bpm_continuity": 0.23095703125,
+          "harmonic_compatibility": 1.0,
+          "genre_continuity": 1.0
+        },
+        "coverage": 0.24858144248880548,
+        "flags": [
+          "energy_jump:+0.29",
+          "unknown:vibe"
+        ],
+        "similarity": 0.36916903525817885
+      },
+      "flags": [
+        "loudness_review",
+        "metadata_review"
+      ]
+    },
+    {
+      "index": 10,
+      "file": "",
+      "title": "Neon Avenue",
+      "artist": "Demo Coral",
+      "duration_s": 69.75,
+      "source_rel": "Demo Coral - Neon Avenue.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Coral - Neon Avenue.mp3",
+      "track_id": "a551a1d1e691",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.01,
+        "true_peak_dbtp": -7.16,
+        "original_lufs": -4.35,
+        "original_true_peak_dbtp": 4.5,
+        "original_lra_lu": 1.7,
+        "final_lra_lu": 1.8,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "duration_s": 70.0,
+        "bpm": 123.046875,
+        "camelot": "9B",
+        "key_confidence": 0.3706591195458527,
+        "energy": 0.85,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "dance-pop",
+        "mood": "energetic",
+        "vibe_tags": [
+          "groove",
+          "dance"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "excluded": false,
+        "requires_review": false,
+        "rel_path": "Demo Coral - Neon Avenue.mp3",
+        "track_id": "a551a1d1e691",
+        "artist": "Demo Coral",
+        "title": "Neon Avenue",
+        "energy_confidence": 1.0,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual"
+        },
+        "review_reasons": [],
+        "exclusion_reasons": [],
+        "script_hint": null,
+        "notes": null
+      },
+      "transition_in": {
+        "total": 0.4144290769059522,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.0,
+          "bpm_continuity": 0.0,
+          "harmonic_compatibility": 1.0,
+          "genre_continuity": 0.5
+        },
+        "coverage": 0.2360979728164293,
+        "flags": [
+          "energy_jump:+0.31",
+          "tempo_jump:172->123",
+          "unknown:vibe"
+        ],
+        "similarity": 0.13756180507072457
+      },
+      "flags": []
+    }
+  ],
+  "excluded": [
+    {
+      "source_rel": "Demo Mira - Night City.mp3",
+      "stage": "curation",
+      "reasons": [
+        "language 'ru' is excluded by the client profile"
+      ]
+    },
+    {
+      "source_rel": "Демо Тест - Утренний трек.mp3",
+      "stage": "curation",
+      "reasons": [
+        "Cyrillic script in artist/title; language unverified — excluded pending curator confirmation"
+      ]
+    },
+    {
+      "source_rel": "Demo Broken - Corrupt File.mp3",
+      "stage": "analysis",
+      "reasons": [
+        "analysis failed: probe failed: ffprobe failed for <demo>\\demo_music\\Demo Broken - Corrupt File.mp3"
+      ]
+    }
+  ],
+  "flagged_transitions": [
+    {
+      "from_index": 3,
+      "to_index": 4,
+      "reasons": [
+        "energy jump +0.28 (0.47 -> 0.75) exceeds 0.20",
+        "harmonic clash 1A -> 6A"
+      ],
+      "kind": "sequencing"
+    },
+    {
+      "from_index": 4,
+      "to_index": 5,
+      "reasons": [
+        "energy jump -0.25 (0.75 -> 0.50) exceeds 0.20",
+        "low transition score 0.27",
+        "harmonic clash 6A -> 9B"
+      ],
+      "kind": "sequencing"
+    },
+    {
+      "from_index": 6,
+      "to_index": 7,
+      "reasons": [
+        "energy jump -0.22 (0.32 -> 0.10) exceeds 0.20",
+        "genre change soft-pop -> experimental"
+      ],
+      "kind": "sequencing"
+    },
+    {
+      "from_index": 7,
+      "to_index": 8,
+      "reasons": [
+        "low transition score 0.24",
+        "mood change dark -> calm",
+        "genre change experimental -> pop"
+      ],
+      "kind": "sequencing"
+    },
+    {
+      "from_index": 8,
+      "to_index": 9,
+      "reasons": [
+        "energy jump +0.29 (0.25 -> 0.54) exceeds 0.20"
+      ],
+      "kind": "sequencing"
+    },
+    {
+      "from_index": 9,
+      "to_index": 10,
+      "reasons": [
+        "energy jump +0.31 (0.54 -> 0.85) exceeds the hard limit 0.30 — no alternative found",
+        "tempo jump 172 -> 123 BPM"
+      ],
+      "kind": "sequencing"
+    },
+    {
+      "from_index": 3,
+      "to_index": 4,
+      "reasons": [
+        "no beat/phrase alignment; tempo 99.4 vs 123 BPM (19% apart) — shortened to 3.0 s, listen"
+      ],
+      "kind": "transition"
+    },
+    {
+      "from_index": 4,
+      "to_index": 5,
+      "reasons": [
+        "no beat/phrase alignment; tempo 123 vs 112.3 BPM (9% apart) — shortened to 3.0 s, listen"
+      ],
+      "kind": "transition"
+    },
+    {
+      "from_index": 5,
+      "to_index": 6,
+      "reasons": [
+        "no beat/phrase alignment; tempo 112.3 vs 86.1 BPM (23% apart) — shortened to 3.0 s, listen"
+      ],
+      "kind": "transition"
+    },
+    {
+      "from_index": 6,
+      "to_index": 7,
+      "reasons": [
+        "no beat/phrase alignment; tempo 86.1 vs 69.8 BPM (19% apart) — shortened to 3.0 s, listen"
+      ],
+      "kind": "transition"
+    },
+    {
+      "from_index": 7,
+      "to_index": 8,
+      "reasons": [
+        "no beat/phrase alignment; tempo 69.8 vs 92.3 BPM (24% apart) — shortened to 3.0 s, listen"
+      ],
+      "kind": "transition"
+    },
+    {
+      "from_index": 8,
+      "to_index": 9,
+      "reasons": [
+        "no beat/phrase alignment; tempo 92.3 vs 172.3 BPM (7% apart) — shortened to 3.0 s, listen"
+      ],
+      "kind": "transition"
+    },
+    {
+      "from_index": 9,
+      "to_index": 10,
+      "reasons": [
+        "large energy difference 0.54 → 0.85 (|ΔE| 0.31 > 0.30) — overlap shortened to 3.0 s",
+        "no beat/phrase alignment; tempo 172.3 vs 123 BPM (29% apart) — shortened to 3.0 s, listen"
+      ],
+      "kind": "transition"
+    }
+  ],
+  "warnings": [],
+  "not_selected": [],
+  "leftover_files": [],
+  "mix": {
+    "file": "mix.mp3",
+    "published": true,
+    "expected_duration_s": 662.05,
+    "rendered_duration_s": 662.05,
+    "sample_rate": 44100,
+    "fade_in_s": 3.0,
+    "fade_out_s": 5.0,
+    "tracks": [
+      {
+        "position": 1,
+        "name": "Demo Aurora - Paper Boats",
+        "source_rel": "Demo Aurora - Paper Boats.mp3",
+        "start_s": 0.0,
+        "end_s": 69.8,
+        "duration_s": 69.8,
+        "head_trim_s": 0.0,
+        "tail_trim_s": 0.2,
+        "crossfade_in_s": 0.0,
+        "fx_in": "—"
+      },
+      {
+        "position": 2,
+        "name": "Demo Harbor - Window Seat",
+        "source_rel": "Demo Harbor - Window Seat.mp3",
+        "start_s": 63.8,
+        "end_s": 133.5,
+        "duration_s": 69.7,
+        "head_trim_s": 0.0,
+        "tail_trim_s": 0.3,
+        "crossfade_in_s": 6.0,
+        "fx_in": "clean"
+      },
+      {
+        "position": 3,
+        "name": "Demo Delta - Lemon Tree Cafe",
+        "source_rel": "Demo Delta - Lemon Tree Cafe.mp3",
+        "start_s": 127.5,
+        "end_s": 197.15,
+        "duration_s": 69.65,
+        "head_trim_s": 0.0,
+        "tail_trim_s": 0.35,
+        "crossfade_in_s": 6.0,
+        "fx_in": "clean"
+      },
+      {
+        "position": 4,
+        "name": "Demo Coral - Weekend Drive",
+        "source_rel": "Demo Coral - Weekend Drive.mp3",
+        "start_s": 194.15,
+        "end_s": 263.85,
+        "duration_s": 69.7,
+        "head_trim_s": 0.0,
+        "tail_trim_s": 0.3,
+        "crossfade_in_s": 3.0,
+        "fx_in": "clean"
+      },
+      {
+        "position": 5,
+        "name": "Demo Harbor - City Walk",
+        "source_rel": "Demo Harbor - City Walk.mp3",
+        "start_s": 260.85,
+        "end_s": 330.4,
+        "duration_s": 69.55,
+        "head_trim_s": 0.0,
+        "tail_trim_s": 0.45,
+        "crossfade_in_s": 3.0,
+        "fx_in": "clean"
+      },
+      {
+        "position": 6,
+        "name": "Demo Echo - Slow Sunday",
+        "source_rel": "Demo Echo - Slow Sunday.mp3",
+        "start_s": 327.4,
+        "end_s": 396.85,
+        "duration_s": 69.45,
+        "head_trim_s": 0.0,
+        "tail_trim_s": 0.55,
+        "crossfade_in_s": 3.0,
+        "fx_in": "clean"
+      },
+      {
+        "position": 7,
+        "name": "Demo Field - Drone Study No. 3",
+        "source_rel": "Demo Field - Drone Study No. 3.mp3",
+        "start_s": 393.85,
+        "end_s": 463.5,
+        "duration_s": 69.65,
+        "head_trim_s": 0.0,
+        "tail_trim_s": 0.35,
+        "crossfade_in_s": 3.0,
+        "fx_in": "clean"
+      },
+      {
+        "position": 8,
+        "name": "Demo Aurora - Morning Glow",
+        "source_rel": "Demo Aurora - Morning Glow.mp3",
+        "start_s": 460.5,
+        "end_s": 530.05,
+        "duration_s": 69.55,
+        "head_trim_s": 0.0,
+        "tail_trim_s": 0.45,
+        "crossfade_in_s": 3.0,
+        "fx_in": "clean"
+      },
+      {
+        "position": 9,
+        "name": "Demo Quiet - Click Garden",
+        "source_rel": "Demo Quiet - Click Garden.mp3",
+        "start_s": 527.05,
+        "end_s": 595.3,
+        "duration_s": 68.25,
+        "head_trim_s": 0.9,
+        "tail_trim_s": 0.85,
+        "crossfade_in_s": 3.0,
+        "fx_in": "clean"
+      },
+      {
+        "position": 10,
+        "name": "Demo Coral - Neon Avenue",
+        "source_rel": "Demo Coral - Neon Avenue.mp3",
+        "start_s": 592.3,
+        "end_s": 662.05,
+        "duration_s": 69.75,
+        "head_trim_s": 0.0,
+        "tail_trim_s": 0.25,
+        "crossfade_in_s": 3.0,
+        "fx_in": "clean"
+      }
+    ],
+    "transitions": [
+      {
+        "position": 2,
+        "crossfade_s": 6.0,
+        "fx": "clean",
+        "curve": "equal_power",
+        "overlap_start_s": 63.8,
+        "overlap_peak_dbfs": -7.644,
+        "overlap_true_peak_dbtp": -7.599,
+        "gain_reduction_db": 0.0,
+        "uncertain": false,
+        "flags": []
+      },
+      {
+        "position": 3,
+        "crossfade_s": 6.0,
+        "fx": "clean",
+        "curve": "equal_power",
+        "overlap_start_s": 127.5,
+        "overlap_peak_dbfs": -8.073,
+        "overlap_true_peak_dbtp": -7.916,
+        "gain_reduction_db": 0.0,
+        "uncertain": false,
+        "flags": []
+      },
+      {
+        "position": 4,
+        "crossfade_s": 3.0,
+        "fx": "clean",
+        "curve": "equal_power",
+        "overlap_start_s": 194.15,
+        "overlap_peak_dbfs": -9.184,
+        "overlap_true_peak_dbtp": -8.971,
+        "gain_reduction_db": 0.0,
+        "uncertain": true,
+        "flags": [
+          "no beat/phrase alignment; tempo 99.4 vs 123 BPM (19% apart) — shortened to 3.0 s, listen"
+        ]
+      },
+      {
+        "position": 5,
+        "crossfade_s": 3.0,
+        "fx": "clean",
+        "curve": "equal_power",
+        "overlap_start_s": 260.85,
+        "overlap_peak_dbfs": -9.832,
+        "overlap_true_peak_dbtp": -9.827,
+        "gain_reduction_db": 0.0,
+        "uncertain": true,
+        "flags": [
+          "no beat/phrase alignment; tempo 123 vs 112.3 BPM (9% apart) — shortened to 3.0 s, listen"
+        ]
+      },
+      {
+        "position": 6,
+        "crossfade_s": 3.0,
+        "fx": "clean",
+        "curve": "equal_power",
+        "overlap_start_s": 327.4,
+        "overlap_peak_dbfs": -8.966,
+        "overlap_true_peak_dbtp": -8.96,
+        "gain_reduction_db": 0.0,
+        "uncertain": true,
+        "flags": [
+          "no beat/phrase alignment; tempo 112.3 vs 86.1 BPM (23% apart) — shortened to 3.0 s, listen"
+        ]
+      },
+      {
+        "position": 7,
+        "crossfade_s": 3.0,
+        "fx": "clean",
+        "curve": "equal_power",
+        "overlap_start_s": 393.85,
+        "overlap_peak_dbfs": -10.186,
+        "overlap_true_peak_dbtp": -10.18,
+        "gain_reduction_db": 0.0,
+        "uncertain": true,
+        "flags": [
+          "no beat/phrase alignment; tempo 86.1 vs 69.8 BPM (19% apart) — shortened to 3.0 s, listen"
+        ]
+      },
+      {
+        "position": 8,
+        "crossfade_s": 3.0,
+        "fx": "clean",
+        "curve": "equal_power",
+        "overlap_start_s": 460.5,
+        "overlap_peak_dbfs": -9.213,
+        "overlap_true_peak_dbtp": -9.208,
+        "gain_reduction_db": 0.0,
+        "uncertain": true,
+        "flags": [
+          "no beat/phrase alignment; tempo 69.8 vs 92.3 BPM (24% apart) — shortened to 3.0 s, listen"
+        ]
+      },
+      {
+        "position": 9,
+        "crossfade_s": 3.0,
+        "fx": "clean",
+        "curve": "equal_power",
+        "overlap_start_s": 527.05,
+        "overlap_peak_dbfs": -3.19,
+        "overlap_true_peak_dbtp": -2.869,
+        "gain_reduction_db": 0.0,
+        "uncertain": true,
+        "flags": [
+          "no beat/phrase alignment; tempo 92.3 vs 172.3 BPM (7% apart) — shortened to 3.0 s, listen"
+        ]
+      },
+      {
+        "position": 10,
+        "crossfade_s": 3.0,
+        "fx": "clean",
+        "curve": "equal_power",
+        "overlap_start_s": 592.3,
+        "overlap_peak_dbfs": -3.205,
+        "overlap_true_peak_dbtp": -2.898,
+        "gain_reduction_db": 0.0,
+        "uncertain": true,
+        "flags": [
+          "large energy difference 0.54 → 0.85 (|ΔE| 0.31 > 0.30) — overlap shortened to 3.0 s",
+          "no beat/phrase alignment; tempo 172.3 vs 123 BPM (29% apart) — shortened to 3.0 s, listen"
+        ]
+      }
+    ],
+    "loudness": {
+      "target_lufs": -16.0,
+      "target_true_peak_dbtp": -1.5,
+      "measured_lufs": -16.0,
+      "true_peak_dbtp": -2.18,
+      "original_lufs": -15.87,
+      "original_true_peak_dbtp": -2.06,
+      "original_lra_lu": 2.8,
+      "final_lra_lu": 2.8,
+      "normalization_status": "passed",
+      "requires_review": false,
+      "processing_mode": "linear",
+      "loudnorm_reported_mode": "linear",
+      "applied_correction_db": 0.0,
+      "encode_attempts": 1,
+      "duration_s": 662.05,
+      "sample_rate": 44100,
+      "channels": 2,
+      "warnings": [],
+      "review_reasons": [],
+      "errors": []
+    },
+    "tracklist": "mix_tracklist.txt",
+    "seed": 2423945497,
+    "render_peak_dbfs": -2.419,
+    "clipped_samples": 0,
+    "audio_sha256": "a77d58c4f6910ea92f6f483f96548616d079d96788caafb70493177f84d0b922",
+    "audio_size_bytes": 26485027
+  },
+  "schema": "vegroove.manifest",
+  "schema_version": 1
+}

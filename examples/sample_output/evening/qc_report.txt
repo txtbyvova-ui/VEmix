@@ -1,0 +1,52 @@
+VEgroove Audio QC
+
+Tracks processed: 2
+Tracks passed: 2
+Tracks failed: 0
+Tracks requiring review: 0
+
+Target LUFS: -16.0
+Measured LUFS range: -16.0 .. -16.0 LUFS
+Maximum measured True Peak: -7.08 dBTP
+
+Excluded tracks: 3
+Unknown metadata: 0
+Suspicious energy transitions: 0
+Silence warnings: n/a (not checked in playlist mode)
+
+Overall status: WARNING
+
+Mode: playlist    Generated: 2026-10-19T20:43:18+00:00
+True-peak target: -1.5 dBTP
+
+Tracks
+---------------------------------------------------------------------------------------------------------
+   #  File                                         Orig LUFS Final LUFS  Orig TP Final TP   Dur s  Status
+   1  tracks/001_Demo_Coral_Neon_Avenue.mp3             -4.3      -16.0     4.50    -7.08    70.0  passed
+   2  tracks/002_Demo_Coral_Weekend_Drive.mp3           -5.6      -16.0     2.90    -7.66    70.0  passed
+
+Issues
+------
+WARNING source_analysis_failed: library file 'Demo Broken - Corrupt File.mp3' could not be analysed and was left out: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+WARNING flagged_transition [#2]: transition #1 -> #2 flagged by the sequencer: same artist 'Demo Coral' with only 0 track(s) in between (minimum 2) — no alternative found; harmonic clash 9B -> 6A
+
+Flagged transitions
+-------------------
+#1 -> #2 [sequencing, manifest]: same artist 'Demo Coral' with only 0 track(s) in between (minimum 2) — no alternative found; harmonic clash 9B -> 6A
+
+Silence
+-------
+  (none)
+
+Excluded tracks
+---------------
+Demo Mira - Night City.mp3 [curation]: language 'ru' is excluded by the client profile
+Демо Тест - Утренний трек.mp3 [curation]: Cyrillic script in artist/title; language unverified — excluded pending curator confirmation
+Demo Broken - Corrupt File.mp3 [analysis]: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+
+Not selected (eligible, not placed by the sequencer)
+----------------------------------------------------
+'Demo Field - Drone Study No. 3.mp3' was eligible but not selected: poor fit for every daypart (best selection score 0.34 < 0.40; here: fit 0.07; energy 0.10 below the evening range 0.40-0.85; no preferred tag/genre/mood (confident, dance pop, danceable, disco, energetic, funk, funky, groove, groovy, nu disco, r&b, rhythmic, soul, warm); editorial score -0.30)
+
+Checks run: manifest, loudness_targets, m3u8_syntax, tracklist_present, track_order, files_exist, paths_inside_output, files_decodable, nonzero_duration, loudness, true_peak, m3u8_durations, duplicates, excluded_tracks, unpublished_tracks, metadata_coverage, flagged_transitions, adjacent_short_term, orphan_files
+Checks skipped: profile_rules: no client profile supplied

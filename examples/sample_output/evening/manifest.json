@@ -1,0 +1,235 @@
+{
+  "generator": "veg_mixer 2.0.0",
+  "generated_at": "2026-10-19T20:42:23Z",
+  "mode": "playlist",
+  "profile": "commercial_pop",
+  "daypart": "evening",
+  "loudness_targets": {
+    "target_lufs": -16.0,
+    "target_true_peak_dbtp": -1.5,
+    "target_lra": 11.0,
+    "lufs_tolerance": 1.0,
+    "true_peak_tolerance_db": 0.2,
+    "codec": "mp3",
+    "encoder": "libmp3lame",
+    "bitrate": "320k",
+    "sample_rate": 44100,
+    "channels": 2
+  },
+  "tracks": [
+    {
+      "index": 1,
+      "file": "tracks/001_Demo_Coral_Neon_Avenue.mp3",
+      "title": "Neon Avenue",
+      "artist": "Demo Coral",
+      "duration_s": 70.0,
+      "source_rel": "Demo Coral - Neon Avenue.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Coral - Neon Avenue.mp3",
+      "track_id": "a551a1d1e691",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.01,
+        "true_peak_dbtp": -7.08,
+        "original_lufs": -4.35,
+        "original_true_peak_dbtp": 4.5,
+        "original_lra_lu": 1.7,
+        "final_lra_lu": 1.8,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "bpm": 123.046875,
+        "camelot": "9B",
+        "key_confidence": 0.3706591195458527,
+        "energy": 0.85,
+        "energy_confidence": 1.0,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "dance-pop",
+        "mood": "energetic",
+        "vibe_tags": [
+          "groove",
+          "dance"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "requires_review": false,
+        "review_reasons": [],
+        "script_hint": null,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual"
+        },
+        "source_duration_s": 70.0,
+        "sequence_position": 1,
+        "daypart_fit": 0.7656,
+        "sequence_notes": [
+          "opening position 1: energy 0.85 above the opening maximum 0.60 — the other 7 track(s) with known energy <= 0.60 are scheduled in other dayparts (3 open their own daypart, 4 fit their daypart better)"
+        ]
+      },
+      "transition_in": null,
+      "flags": []
+    },
+    {
+      "index": 2,
+      "file": "tracks/002_Demo_Coral_Weekend_Drive.mp3",
+      "title": "Weekend Drive",
+      "artist": "Demo Coral",
+      "duration_s": 70.0,
+      "source_rel": "Demo Coral - Weekend Drive.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Coral - Weekend Drive.mp3",
+      "track_id": "b83a41341d8b",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.02,
+        "true_peak_dbtp": -7.66,
+        "original_lufs": -5.56,
+        "original_true_peak_dbtp": 2.9,
+        "original_lra_lu": 1.9,
+        "final_lra_lu": 1.9,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "bpm": 123.046875,
+        "camelot": "6A",
+        "key_confidence": 0.3987274797924659,
+        "energy": 0.75,
+        "energy_confidence": 1.0,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "dance-pop",
+        "mood": "energetic",
+        "vibe_tags": [
+          "groove",
+          "dance"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "requires_review": false,
+        "review_reasons": [],
+        "script_hint": null,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual"
+        },
+        "source_duration_s": 70.0,
+        "sequence_position": 2,
+        "daypart_fit": 0.9219,
+        "sequence_notes": [
+          "transition in: same artist 'Demo Coral' with only 0 track(s) in between (minimum 2) — no alternative found",
+          "opening position 2: energy 0.75 above the opening maximum 0.60 — the other 7 track(s) with known energy <= 0.60 are scheduled in other dayparts (3 open their own daypart, 4 fit their daypart better)"
+        ]
+      },
+      "transition_in": {
+        "total": 0.8095528235465365,
+        "components": {
+          "vibe_similarity": 1.0,
+          "energy_continuity": 0.6666666666666667,
+          "bpm_continuity": 1.0,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 1.0
+        },
+        "coverage": 0.8107586063005923,
+        "flags": [
+          "harmonic_clash:9B->6A"
+        ],
+        "similarity": 0.8818063985271695
+      },
+      "flags": [
+        "listen_transition"
+      ]
+    }
+  ],
+  "excluded": [
+    {
+      "source_rel": "Demo Mira - Night City.mp3",
+      "stage": "curation",
+      "reasons": [
+        "language 'ru' is excluded by the client profile"
+      ]
+    },
+    {
+      "source_rel": "Демо Тест - Утренний трек.mp3",
+      "stage": "curation",
+      "reasons": [
+        "Cyrillic script in artist/title; language unverified — excluded pending curator confirmation"
+      ]
+    },
+    {
+      "source_rel": "Demo Broken - Corrupt File.mp3",
+      "stage": "analysis",
+      "reasons": [
+        "analysis failed: probe failed: ffprobe failed for <demo>\\demo_music\\Demo Broken - Corrupt File.mp3"
+      ]
+    }
+  ],
+  "flagged_transitions": [
+    {
+      "kind": "sequencing",
+      "from_index": 1,
+      "to_index": 2,
+      "from_track": "Demo Coral - Neon Avenue",
+      "to_track": "Demo Coral - Weekend Drive",
+      "reasons": [
+        "same artist 'Demo Coral' with only 0 track(s) in between (minimum 2) — no alternative found",
+        "harmonic clash 9B -> 6A"
+      ],
+      "score": 0.8096
+    }
+  ],
+  "warnings": [],
+  "not_selected": [
+    {
+      "source_rel": "Demo Field - Drone Study No. 3.mp3",
+      "track_id": "6d3d5882c0c3",
+      "reason": "poor fit for every daypart (best selection score 0.34 < 0.40; here: fit 0.07; energy 0.10 below the evening range 0.40-0.85; no preferred tag/genre/mood (confident, dance pop, danceable, disco, energetic, funk, funky, groove, groovy, nu disco, r&b, rhythmic, soul, warm); editorial score -0.30)"
+    }
+  ],
+  "leftover_files": [],
+  "mix": null,
+  "schema": "vegroove.manifest",
+  "schema_version": 1
+}

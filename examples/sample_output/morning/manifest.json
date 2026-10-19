@@ -1,0 +1,402 @@
+{
+  "generator": "veg_mixer 2.0.0",
+  "generated_at": "2026-10-19T20:42:15Z",
+  "mode": "playlist",
+  "profile": "commercial_pop",
+  "daypart": "morning",
+  "loudness_targets": {
+    "target_lufs": -16.0,
+    "target_true_peak_dbtp": -1.5,
+    "target_lra": 11.0,
+    "lufs_tolerance": 1.0,
+    "true_peak_tolerance_db": 0.2,
+    "codec": "mp3",
+    "encoder": "libmp3lame",
+    "bitrate": "320k",
+    "sample_rate": 44100,
+    "channels": 2
+  },
+  "tracks": [
+    {
+      "index": 1,
+      "file": "tracks/001_Demo_Aurora_Morning_Glow.mp3",
+      "title": "Morning Glow",
+      "artist": "Demo Aurora",
+      "duration_s": 70.0,
+      "source_rel": "Demo Aurora - Morning Glow.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Aurora - Morning Glow.mp3",
+      "track_id": "dab81f63dcb2",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.0,
+        "true_peak_dbtp": -6.7,
+        "original_lufs": -18.47,
+        "original_true_peak_dbtp": -9.2,
+        "original_lra_lu": 2.7,
+        "final_lra_lu": 2.6,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "bpm": 92.28515625,
+        "camelot": "8B",
+        "key_confidence": 0.5361899274015608,
+        "energy": 0.25,
+        "energy_confidence": 1.0,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": "calm",
+        "vibe_tags": [
+          "melodic",
+          "acoustic"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "requires_review": false,
+        "review_reasons": [],
+        "script_hint": null,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual",
+          "notes": "manual"
+        },
+        "source_duration_s": 70.0,
+        "sequence_position": 1,
+        "daypart_fit": 0.9219,
+        "sequence_notes": []
+      },
+      "transition_in": null,
+      "flags": []
+    },
+    {
+      "index": 2,
+      "file": "tracks/002_Demo_Echo_Slow_Sunday.mp3",
+      "title": "Slow Sunday",
+      "artist": "Demo Echo",
+      "duration_s": 70.0,
+      "source_rel": "Demo Echo - Slow Sunday.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Echo - Slow Sunday.mp3",
+      "track_id": "0e2ad0973266",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -15.99,
+        "true_peak_dbtp": -4.5,
+        "original_lufs": -23.75,
+        "original_true_peak_dbtp": -12.26,
+        "original_lra_lu": 2.2,
+        "final_lra_lu": 2.3,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "bpm": 86.1328125,
+        "camelot": "6A",
+        "key_confidence": 0.6363675682074165,
+        "energy": 0.318,
+        "energy_confidence": 0.4,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "soft-pop",
+        "mood": null,
+        "vibe_tags": [],
+        "language": "it",
+        "familiarity": null,
+        "approved": false,
+        "requires_review": true,
+        "review_reasons": [
+          "not yet approved by curator"
+        ],
+        "script_hint": null,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "auto:energy-heuristic-v1"
+        },
+        "source_duration_s": 70.0,
+        "sequence_position": 2,
+        "daypart_fit": 0.7,
+        "sequence_notes": []
+      },
+      "transition_in": {
+        "total": 0.528615060359104,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.7733333333333333,
+          "bpm_continuity": 0.615478515625,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 0.5
+        },
+        "coverage": 0.24858144248880548,
+        "flags": [
+          "harmonic_clash:8B->6A",
+          "unknown:vibe"
+        ],
+        "similarity": 0.6151134214710846
+      },
+      "flags": [
+        "metadata_review"
+      ]
+    },
+    {
+      "index": 3,
+      "file": "tracks/003_Demo_Aurora_Paper_Boats.mp3",
+      "title": "Paper Boats",
+      "artist": "Demo Aurora",
+      "duration_s": 70.0,
+      "source_rel": "Demo Aurora - Paper Boats.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Aurora - Paper Boats.mp3",
+      "track_id": "30abd4701554",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.0,
+        "true_peak_dbtp": -8.3,
+        "original_lufs": -10.9,
+        "original_true_peak_dbtp": -3.2,
+        "original_lra_lu": 2.3,
+        "final_lra_lu": 2.3,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "bpm": 99.38401442307692,
+        "camelot": "9B",
+        "key_confidence": 0.5004258995970469,
+        "energy": 0.35,
+        "energy_confidence": 1.0,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": "warm",
+        "vibe_tags": [
+          "melodic",
+          "recognizable"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "requires_review": false,
+        "review_reasons": [],
+        "script_hint": null,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual"
+        },
+        "source_duration_s": 70.0,
+        "sequence_position": 3,
+        "daypart_fit": 1.0,
+        "sequence_notes": [
+          "transition in: same artist 'Demo Aurora' with only 1 track(s) in between (minimum 2) — no alternative found while keeping the calm opening (first 3 track(s) at energy <= 0.40)"
+        ]
+      },
+      "transition_in": {
+        "total": 0.5128813681771041,
+        "components": {
+          "vibe_similarity": null,
+          "energy_continuity": 0.8933333333333334,
+          "bpm_continuity": 0.1717998798076925,
+          "harmonic_compatibility": 0.0,
+          "genre_continuity": 0.5
+        },
+        "coverage": 0.24588430615362342,
+        "flags": [
+          "harmonic_clash:6A->9B",
+          "unknown:vibe"
+        ],
+        "similarity": 0.552387923322996
+      },
+      "flags": [
+        "listen_transition"
+      ]
+    },
+    {
+      "index": 4,
+      "file": "tracks/004_Demo_Harbor_City_Walk.mp3",
+      "title": "City Walk",
+      "artist": "Demo Harbor",
+      "duration_s": 70.0,
+      "source_rel": "Demo Harbor - City Walk.mp3",
+      "source_path": "<demo>\\demo_music\\Demo Harbor - City Walk.mp3",
+      "track_id": "dcc4f53ef572",
+      "loudness": {
+        "target_lufs": -16.0,
+        "target_true_peak_dbtp": -1.5,
+        "measured_lufs": -16.01,
+        "true_peak_dbtp": -7.8,
+        "original_lufs": -8.52,
+        "original_true_peak_dbtp": -0.1,
+        "original_lra_lu": 2.3,
+        "final_lra_lu": 2.3,
+        "normalization_status": "passed",
+        "requires_review": false,
+        "processing_mode": "linear",
+        "loudnorm_reported_mode": "linear",
+        "applied_correction_db": 0.0,
+        "encode_attempts": 1,
+        "duration_s": 70.0,
+        "sample_rate": 44100,
+        "channels": 2,
+        "warnings": [],
+        "review_reasons": [],
+        "errors": []
+      },
+      "features": {
+        "bpm": 112.34714673913044,
+        "camelot": "9B",
+        "key_confidence": 0.4062256419882816,
+        "energy": 0.5,
+        "energy_confidence": 1.0,
+        "danceability": null,
+        "vocal_presence": null,
+        "genre": "pop",
+        "mood": "uplifting",
+        "vibe_tags": [
+          "recognizable"
+        ],
+        "language": "en",
+        "familiarity": null,
+        "approved": true,
+        "requires_review": false,
+        "review_reasons": [],
+        "script_hint": null,
+        "feature_sources": {
+          "artist": "id3",
+          "title": "id3",
+          "genre": "id3",
+          "language": "id3",
+          "bpm": "auto:bpm-v1",
+          "camelot": "auto:key-v1",
+          "key_confidence": "auto:key-v1",
+          "energy": "manual",
+          "mood": "manual",
+          "vibe_tags": "manual",
+          "approved": "manual"
+        },
+        "source_duration_s": 70.0,
+        "sequence_position": 4,
+        "daypart_fit": 1.0,
+        "sequence_notes": []
+      },
+      "transition_in": {
+        "total": 0.38657138975988914,
+        "components": {
+          "vibe_similarity": 0.2,
+          "energy_continuity": 0.4999999999999999,
+          "bpm_continuity": 0.18980423024665516,
+          "harmonic_compatibility": 1.0,
+          "genre_continuity": 1.0
+        },
+        "coverage": 0.8134408478120876,
+        "flags": [],
+        "similarity": 0.3605570269243303
+      },
+      "flags": []
+    }
+  ],
+  "excluded": [
+    {
+      "source_rel": "Demo Mira - Night City.mp3",
+      "stage": "curation",
+      "reasons": [
+        "language 'ru' is excluded by the client profile"
+      ]
+    },
+    {
+      "source_rel": "Демо Тест - Утренний трек.mp3",
+      "stage": "curation",
+      "reasons": [
+        "Cyrillic script in artist/title; language unverified — excluded pending curator confirmation"
+      ]
+    },
+    {
+      "source_rel": "Demo Broken - Corrupt File.mp3",
+      "stage": "analysis",
+      "reasons": [
+        "analysis failed: probe failed: ffprobe failed for <demo>\\demo_music\\Demo Broken - Corrupt File.mp3"
+      ]
+    }
+  ],
+  "flagged_transitions": [
+    {
+      "kind": "sequencing",
+      "from_index": 2,
+      "to_index": 3,
+      "from_track": "Demo Echo - Slow Sunday",
+      "to_track": "Demo Aurora - Paper Boats",
+      "reasons": [
+        "same artist 'Demo Aurora' with only 1 track(s) in between (minimum 2) — no alternative found while keeping the calm opening (first 3 track(s) at energy <= 0.40)",
+        "harmonic clash 6A -> 9B"
+      ],
+      "score": 0.5129
+    }
+  ],
+  "warnings": [],
+  "not_selected": [
+    {
+      "source_rel": "Demo Field - Drone Study No. 3.mp3",
+      "track_id": "6d3d5882c0c3",
+      "reason": "poor fit for every daypart (best selection score 0.34 < 0.40; here: fit 0.34; energy 0.10 below the morning range 0.15-0.60; no preferred tag/genre/mood (accessible, acoustic, acoustic pop, bright, calm, mellow, melodic, pop, relaxed, singer songwriter, soft rock, uplifting, warm); editorial score -0.30)"
+    }
+  ],
+  "leftover_files": [],
+  "mix": null,
+  "schema": "vegroove.manifest",
+  "schema_version": 1
+}

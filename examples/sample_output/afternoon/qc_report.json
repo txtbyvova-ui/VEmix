@@ -1,0 +1,242 @@
+{
+  "mode": "playlist",
+  "generated_at": "2026-10-19T20:43:17+00:00",
+  "status": "WARNING",
+  "target_lufs": -16.0,
+  "target_true_peak_dbtp": -1.5,
+  "tracks": [
+    {
+      "position": 1,
+      "file": "tracks/001_Demo_Delta_Lemon_Tree_Cafe.mp3",
+      "source_rel": "Demo Delta - Lemon Tree Cafe.mp3",
+      "original_lufs": -12.53,
+      "final_lufs": -16.0,
+      "original_true_peak_dbtp": -3.8,
+      "final_true_peak_dbtp": -7.27,
+      "duration_s": 70.0,
+      "status": "review",
+      "warnings": [
+        "WARNING: #1 tracks/001_Demo_Delta_Lemon_Tree_Cafe.mp3 is flagged for review: editorial: not yet approved by curator"
+      ]
+    },
+    {
+      "position": 2,
+      "file": "tracks/002_Demo_Harbor_Window_Seat.mp3",
+      "source_rel": "Demo Harbor - Window Seat.mp3",
+      "original_lufs": -10.76,
+      "final_lufs": -16.01,
+      "original_true_peak_dbtp": -1.8,
+      "final_true_peak_dbtp": -7.07,
+      "duration_s": 70.0,
+      "status": "review",
+      "warnings": [
+        "WARNING: #2 tracks/002_Demo_Harbor_Window_Seat.mp3 is flagged for review: editorial: not yet approved by curator"
+      ]
+    },
+    {
+      "position": 3,
+      "file": "tracks/003_Demo_Quiet_Click_Garden.mp3",
+      "source_rel": "Demo Quiet - Click Garden.mp3",
+      "original_lufs": -28.02,
+      "final_lufs": -30.12,
+      "original_true_peak_dbtp": 0.5,
+      "final_true_peak_dbtp": -1.6,
+      "duration_s": 70.0,
+      "status": "review",
+      "warnings": [
+        "WARNING: #3 tracks/003_Demo_Quiet_Click_Garden.mp3 measures -30.1 LUFS (-14.1 LU vs target): requires review — integrated loudness -30.1 LUFS is 14.1 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review",
+        "export: target -16.0 LUFS needs +12.0 dB but the true peak (+0.5 dBTP) allows only -2.5 dB; reaching it would need ~14.6 dB of limiting (max allowed 0.0 dB) — delivering ~-30.6 LUFS peak-safe instead",
+        "export: closed-loop correction of +0.45 dB applied after measuring the output"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "severity": "WARNING",
+      "code": "requires_review",
+      "message": "#1 tracks/001_Demo_Delta_Lemon_Tree_Cafe.mp3 is flagged for review: editorial: not yet approved by curator",
+      "track_position": 1,
+      "timestamp_s": null,
+      "file": "tracks/001_Demo_Delta_Lemon_Tree_Cafe.mp3"
+    },
+    {
+      "severity": "WARNING",
+      "code": "requires_review",
+      "message": "#2 tracks/002_Demo_Harbor_Window_Seat.mp3 is flagged for review: editorial: not yet approved by curator",
+      "track_position": 2,
+      "timestamp_s": null,
+      "file": "tracks/002_Demo_Harbor_Window_Seat.mp3"
+    },
+    {
+      "severity": "WARNING",
+      "code": "requires_review",
+      "message": "#3 tracks/003_Demo_Quiet_Click_Garden.mp3 measures -30.1 LUFS (-14.1 LU vs target): requires review — integrated loudness -30.1 LUFS is 14.1 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review",
+      "track_position": 3,
+      "timestamp_s": null,
+      "file": "tracks/003_Demo_Quiet_Click_Garden.mp3"
+    },
+    {
+      "severity": "WARNING",
+      "code": "source_analysis_failed",
+      "message": "library file 'Demo Broken - Corrupt File.mp3' could not be analysed and was left out: analysis failed: probe failed: ffprobe failed for <demo>\\demo_music\\Demo Broken - Corrupt File.mp3",
+      "track_position": null,
+      "timestamp_s": null,
+      "file": "Demo Broken - Corrupt File.mp3"
+    },
+    {
+      "severity": "INFO",
+      "code": "unknown_metadata",
+      "message": "3 track(s) with unknown energy/mood/genre/language: #1, #2, #3",
+      "track_position": null,
+      "timestamp_s": null,
+      "file": null
+    },
+    {
+      "severity": "INFO",
+      "code": "not_selected",
+      "message": "'Demo Field - Drone Study No. 3.mp3' was eligible but not selected: daypart 'afternoon' avoids tag 'experimental'",
+      "track_position": null,
+      "timestamp_s": null,
+      "file": "Demo Field - Drone Study No. 3.mp3"
+    },
+    {
+      "severity": "INFO",
+      "code": "flagged_transition",
+      "message": "transition #2 -> #3 (loudness) flagged at export (re-checked by QC): short-term loudness (p95) changes -19.4 LU between adjacent tracks; loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU)",
+      "track_position": 3,
+      "timestamp_s": null,
+      "file": null
+    },
+    {
+      "severity": "WARNING",
+      "code": "flagged_transition",
+      "message": "transition #2 -> #3 flagged by the sequencer: tempo jump 103 -> 172 BPM; harmonic clash 6A -> 9B",
+      "track_position": 3,
+      "timestamp_s": null,
+      "file": null
+    },
+    {
+      "severity": "WARNING",
+      "code": "adjacent_loudness_jump",
+      "message": "transition #2 -> #3: short-term loudness (p95) changes -19.4 LU between adjacent tracks; loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU) — listen before release (not auto-compressed)",
+      "track_position": 3,
+      "timestamp_s": null,
+      "file": null
+    }
+  ],
+  "checks_run": [
+    "manifest",
+    "loudness_targets",
+    "m3u8_syntax",
+    "tracklist_present",
+    "track_order",
+    "files_exist",
+    "paths_inside_output",
+    "files_decodable",
+    "nonzero_duration",
+    "loudness",
+    "true_peak",
+    "m3u8_durations",
+    "duplicates",
+    "excluded_tracks",
+    "unpublished_tracks",
+    "metadata_coverage",
+    "flagged_transitions",
+    "adjacent_short_term",
+    "orphan_files"
+  ],
+  "checks_skipped": [
+    "profile_rules: no client profile supplied"
+  ],
+  "excluded": [
+    {
+      "source_rel": "Demo Mira - Night City.mp3",
+      "stage": "curation",
+      "reasons": [
+        "language 'ru' is excluded by the client profile"
+      ]
+    },
+    {
+      "source_rel": "Демо Тест - Утренний трек.mp3",
+      "stage": "curation",
+      "reasons": [
+        "Cyrillic script in artist/title; language unverified — excluded pending curator confirmation"
+      ]
+    },
+    {
+      "source_rel": "Demo Broken - Corrupt File.mp3",
+      "stage": "analysis",
+      "reasons": [
+        "analysis failed: probe failed: ffprobe failed for <demo>\\demo_music\\Demo Broken - Corrupt File.mp3"
+      ]
+    }
+  ],
+  "flagged_transitions": [
+    {
+      "kind": "loudness",
+      "from_index": 2,
+      "to_index": 3,
+      "reasons": [
+        "short-term loudness (p95) changes -19.4 LU between adjacent tracks",
+        "loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU)"
+      ],
+      "source": "manifest"
+    },
+    {
+      "kind": "sequencing",
+      "from_index": 2,
+      "to_index": 3,
+      "from_track": "Demo Harbor - Window Seat",
+      "to_track": "Demo Quiet - Click Garden",
+      "reasons": [
+        "tempo jump 103 -> 172 BPM",
+        "harmonic clash 6A -> 9B"
+      ],
+      "score": 0.527,
+      "source": "manifest"
+    },
+    {
+      "from_index": 2,
+      "to_index": 3,
+      "reasons": [
+        "short-term loudness (p95) changes -19.4 LU between adjacent tracks",
+        "loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU)"
+      ],
+      "kind": "loudness",
+      "source": "qc"
+    }
+  ],
+  "silence_warnings": [],
+  "unknown_metadata": 3,
+  "summary": {
+    "mode": "playlist",
+    "tracks_processed": 3,
+    "tracks_passed": 0,
+    "tracks_failed": 0,
+    "tracks_requiring_review": 3,
+    "target_lufs": -16.0,
+    "target_true_peak_dbtp": -1.5,
+    "measured_lufs_min": -30.12,
+    "measured_lufs_max": -16.0,
+    "max_true_peak_dbtp": -1.6,
+    "excluded_tracks": 3,
+    "not_selected": 1,
+    "unknown_metadata": 3,
+    "suspicious_energy_transitions": 0,
+    "flagged_transitions": 3,
+    "silence_warnings": null,
+    "not_checked": [
+      "silence_warnings"
+    ],
+    "silence_info": 0,
+    "issues_by_severity": {
+      "INFO": 3,
+      "WARNING": 6,
+      "FAIL": 0
+    },
+    "checks_run": 19,
+    "checks_skipped": 1,
+    "overall_status": "WARNING"
+  },
+  "mix": null
+}

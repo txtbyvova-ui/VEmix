@@ -1,0 +1,66 @@
+VEgroove Audio QC
+
+Tracks processed: 3
+Tracks passed: 0
+Tracks failed: 0
+Tracks requiring review: 3
+
+Target LUFS: -16.0
+Measured LUFS range: -30.1 .. -16.0 LUFS
+Maximum measured True Peak: -1.60 dBTP
+
+Excluded tracks: 3
+Unknown metadata: 3
+Suspicious energy transitions: 0
+Silence warnings: n/a (not checked in playlist mode)
+
+Overall status: WARNING
+
+Mode: playlist    Generated: 2026-10-19T20:43:17+00:00
+True-peak target: -1.5 dBTP
+
+Tracks
+---------------------------------------------------------------------------------------------------------
+   #  File                                         Orig LUFS Final LUFS  Orig TP Final TP   Dur s  Status
+   1  tracks/001_Demo_Delta_Lemon_Tree_Cafe.mp3        -12.5      -16.0    -3.80    -7.27    70.0  review
+      - WARNING: #1 tracks/001_Demo_Delta_Lemon_Tree_Cafe.mp3 is flagged for review: editorial: not yet approved by curator
+   2  tracks/002_Demo_Harbor_Window_Seat.mp3           -10.8      -16.0    -1.80    -7.07    70.0  review
+      - WARNING: #2 tracks/002_Demo_Harbor_Window_Seat.mp3 is flagged for review: editorial: not yet approved by curator
+   3  tracks/003_Demo_Quiet_Click_Garden.mp3           -28.0      -30.1     0.50    -1.60    70.0  review
+      - WARNING: #3 tracks/003_Demo_Quiet_Click_Garden.mp3 measures -30.1 LUFS (-14.1 LU vs target): requires review — integrated loudness -30.1 LUFS is 14.1 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review
+      - export: target -16.0 LUFS needs +12.0 dB but the true peak (+0.5 dBTP) allows only -2.5 dB; reaching it would need ~14.6 dB of limiting (max allowed 0.0 dB) — delivering ~-30.6 LUFS peak-safe instead
+      - export: closed-loop correction of +0.45 dB applied after measuring the output
+
+Issues
+------
+WARNING requires_review [#1]: #1 tracks/001_Demo_Delta_Lemon_Tree_Cafe.mp3 is flagged for review: editorial: not yet approved by curator
+WARNING requires_review [#2]: #2 tracks/002_Demo_Harbor_Window_Seat.mp3 is flagged for review: editorial: not yet approved by curator
+WARNING requires_review [#3]: #3 tracks/003_Demo_Quiet_Click_Garden.mp3 measures -30.1 LUFS (-14.1 LU vs target): requires review — integrated loudness -30.1 LUFS is 14.1 LU below the -16.0 LUFS target: not reachable within the -1.5 dBTP true-peak limit without heavy limiting; delivered peak-safe — needs listening review
+WARNING source_analysis_failed: library file 'Demo Broken - Corrupt File.mp3' could not be analysed and was left out: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+WARNING flagged_transition [#3]: transition #2 -> #3 flagged by the sequencer: tempo jump 103 -> 172 BPM; harmonic clash 6A -> 9B
+WARNING adjacent_loudness_jump [#3]: transition #2 -> #3: short-term loudness (p95) changes -19.4 LU between adjacent tracks; loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU) — listen before release (not auto-compressed)
+INFO    unknown_metadata: 3 track(s) with unknown energy/mood/genre/language: #1, #2, #3
+INFO    flagged_transition [#3]: transition #2 -> #3 (loudness) flagged at export (re-checked by QC): short-term loudness (p95) changes -19.4 LU between adjacent tracks; loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU)
+
+Flagged transitions
+-------------------
+#2 -> #3 [loudness, manifest]: short-term loudness (p95) changes -19.4 LU between adjacent tracks; loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU)
+#2 -> #3 [sequencing, manifest]: tempo jump 103 -> 172 BPM; harmonic clash 6A -> 9B
+#2 -> #3 [loudness, qc]: short-term loudness (p95) changes -19.4 LU between adjacent tracks; loudness jump at the boundary: outgoing tail -17.2 → incoming head -34.9 LUFS (-17.7 LU)
+
+Silence
+-------
+  (none)
+
+Excluded tracks
+---------------
+Demo Mira - Night City.mp3 [curation]: language 'ru' is excluded by the client profile
+Демо Тест - Утренний трек.mp3 [curation]: Cyrillic script in artist/title; language unverified — excluded pending curator confirmation
+Demo Broken - Corrupt File.mp3 [analysis]: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+
+Not selected (eligible, not placed by the sequencer)
+----------------------------------------------------
+'Demo Field - Drone Study No. 3.mp3' was eligible but not selected: daypart 'afternoon' avoids tag 'experimental'
+
+Checks run: manifest, loudness_targets, m3u8_syntax, tracklist_present, track_order, files_exist, paths_inside_output, files_decodable, nonzero_duration, loudness, true_peak, m3u8_durations, duplicates, excluded_tracks, unpublished_tracks, metadata_coverage, flagged_transitions, adjacent_short_term, orphan_files
+Checks skipped: profile_rules: no client profile supplied

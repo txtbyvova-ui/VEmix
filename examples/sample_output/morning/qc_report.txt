@@ -1,0 +1,57 @@
+VEgroove Audio QC
+
+Tracks processed: 4
+Tracks passed: 3
+Tracks failed: 0
+Tracks requiring review: 1
+
+Target LUFS: -16.0
+Measured LUFS range: -16.0 .. -16.0 LUFS
+Maximum measured True Peak: -4.50 dBTP
+
+Excluded tracks: 3
+Unknown metadata: 1
+Suspicious energy transitions: 0
+Silence warnings: n/a (not checked in playlist mode)
+
+Overall status: WARNING
+
+Mode: playlist    Generated: 2026-10-19T20:43:39+00:00
+True-peak target: -1.5 dBTP
+
+Tracks
+---------------------------------------------------------------------------------------------------------
+   #  File                                         Orig LUFS Final LUFS  Orig TP Final TP   Dur s  Status
+   1  tracks/001_Demo_Aurora_Morning_Glow.mp3          -18.5      -16.0    -9.20    -6.70    70.0  passed
+   2  tracks/002_Demo_Echo_Slow_Sunday.mp3             -23.8      -16.0   -12.26    -4.50    70.0  review
+      - WARNING: #2 tracks/002_Demo_Echo_Slow_Sunday.mp3 is flagged for review: editorial: not yet approved by curator
+   3  tracks/003_Demo_Aurora_Paper_Boats.mp3           -10.9      -16.0    -3.20    -8.30    70.0  passed
+   4  tracks/004_Demo_Harbor_City_Walk.mp3              -8.5      -16.0    -0.10    -7.80    70.0  passed
+
+Issues
+------
+WARNING requires_review [#2]: #2 tracks/002_Demo_Echo_Slow_Sunday.mp3 is flagged for review: editorial: not yet approved by curator
+WARNING source_analysis_failed: library file 'Demo Broken - Corrupt File.mp3' could not be analysed and was left out: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+WARNING flagged_transition [#3]: transition #2 -> #3 flagged by the sequencer: same artist 'Demo Aurora' with only 1 track(s) in between (minimum 2) — no alternative found while keeping the calm opening (first 3 track(s) at energy <= 0.40); harmonic clash 6A -> 9B
+INFO    unknown_metadata: 1 track(s) with unknown energy/mood/genre/language: #2
+
+Flagged transitions
+-------------------
+#2 -> #3 [sequencing, manifest]: same artist 'Demo Aurora' with only 1 track(s) in between (minimum 2) — no alternative found while keeping the calm opening (first 3 track(s) at energy <= 0.40); harmonic clash 6A -> 9B
+
+Silence
+-------
+  (none)
+
+Excluded tracks
+---------------
+Demo Mira - Night City.mp3 [curation]: language 'ru' is excluded by the client profile
+Демо Тест - Утренний трек.mp3 [curation]: Cyrillic script in artist/title; language unverified — excluded pending curator confirmation
+Demo Broken - Corrupt File.mp3 [analysis]: analysis failed: probe failed: ffprobe failed for <demo>\demo_music\Demo Broken - Corrupt File.mp3
+
+Not selected (eligible, not placed by the sequencer)
+----------------------------------------------------
+'Demo Field - Drone Study No. 3.mp3' was eligible but not selected: poor fit for every daypart (best selection score 0.34 < 0.40; here: fit 0.34; energy 0.10 below the morning range 0.15-0.60; no preferred tag/genre/mood (accessible, acoustic, acoustic pop, bright, calm, mellow, melodic, pop, relaxed, singer songwriter, soft rock, uplifting, warm); editorial score -0.30)
+
+Checks run: manifest, loudness_targets, m3u8_syntax, tracklist_present, track_order, files_exist, paths_inside_output, files_decodable, nonzero_duration, loudness, true_peak, m3u8_durations, duplicates, excluded_tracks, unpublished_tracks, metadata_coverage, flagged_transitions, adjacent_short_term, orphan_files
+Checks skipped: profile_rules: no client profile supplied
