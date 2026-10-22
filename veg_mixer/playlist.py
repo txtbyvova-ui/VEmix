@@ -1255,7 +1255,7 @@ def export_playlist(sequence: SequenceResult, output_dir: Path, normalizer: Loud
                     input_measurements: dict[str, LoudnessMeasurement] | None = None,
                     source_probes: dict[str, AudioProbe] | None = None, jobs: int = 1,
                     dry_run: bool = False, progress: ProgressCallback | None = None,
-                    not_selected: list[dict] | None = None) -> PlaylistExportResult:
+                    not_selected: list[dict] | None = None, plan: dict | None = None) -> PlaylistExportResult:
     """Export ``sequence`` as individually playable normalized MP3s + playlist files.
 
     ``input_measurements`` / ``source_probes`` are keyed by ``track_id`` (cached pass-1
@@ -1277,6 +1277,9 @@ def export_playlist(sequence: SequenceResult, output_dir: Path, normalizer: Loud
 
     ``dry_run`` writes nothing (no folders either) and returns a manifest preview with
     the planned file names; ``normalizer`` may be ``None`` then.
+
+    ``plan`` (VEmix 3.0 ``render``) is copied into ``manifest.plan`` so ``qc`` can check the
+    delivery against the dramaturgy plan; without it the manifest is exactly as in 2.0.
 
     Raises PlaylistExportError when the export cannot be done safely (a source inside
     ``tracks/``, a foreign ``manifest.json`` / ``playlist.m3u8`` / ``tracklist.txt``, a
@@ -1305,7 +1308,7 @@ def export_playlist(sequence: SequenceResult, output_dir: Path, normalizer: Loud
             daypart=sequence.daypart, loudness_targets=_loudness_targets(normalizer),
             tracks=[_manifest_track(e) for e in survivors], excluded=excluded_all,
             flagged_transitions=flagged, warnings=[*extra_warnings, *warnings],
-            not_selected=list(not_selected_entries))
+            not_selected=list(not_selected_entries), plan=plan)
 
     if not items:
         where = f" for daypart '{sequence.daypart}'" if sequence.daypart else ""

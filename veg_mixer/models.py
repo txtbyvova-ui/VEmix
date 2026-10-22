@@ -582,9 +582,15 @@ class PlaylistManifest:
     mix: dict | None = None           # mix mode: file, duration, transitions, timestamps
     schema: str = "vegroove.manifest"
     schema_version: int = SCHEMA_VERSION
+    # VEmix 3.0: the dramaturgy plan this delivery was rendered from (scenario, variant, planned
+    # order with phases/targets, anchors). Written only by `render`; absent from 2.0 outputs.
+    plan: dict | None = None
 
     def to_dict(self) -> dict:
-        return to_jsonable(self)
+        d = to_jsonable(self)
+        if d.get("plan") is None:
+            d.pop("plan", None)        # 2.0 manifests stay byte-for-byte as before
+        return d
 
     @classmethod
     def from_dict(cls, d: dict) -> "PlaylistManifest":

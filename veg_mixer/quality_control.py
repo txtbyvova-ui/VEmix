@@ -135,8 +135,18 @@ NON_CRITICAL_CHECKS = frozenset({
 # Issues about a transition between two tracks (not about one track's audio).
 TRANSITION_CODES = frozenset({
     "adjacent_loudness_jump", "suspicious_energy_transition", "flagged_transition",
-    "peak_protection_applied", "uncertain_transition",
+    "peak_protection_applied", "uncertain_transition", "planned_contrast_transition",
 })
+
+# VEmix 3.0 plan violations about a PAIR of tracks: they reach the manifest as sequencer flags
+# (plan_pipeline.TRANSITION_VIOLATIONS); every other kind is reported from manifest.plan itself.
+PLAN_TRANSITION_VIOLATIONS = frozenset({"forbidden_pair", "tempo_jump", "key_jump", "energy_jump", "artist_gap"})
+# plan.order[].anchored: "position 1" / "position -1" (from the end) / "phase climax" (not positional)
+_ANCHOR_POSITION_RE = re.compile(r"^position\s+([+-]?\d+)$", re.I)
+# Renderer notes on an uncertain transition (transitions.plan_transition_detailed): the energy
+# difference note vs a tempo / beat cause ("no beat/phrase alignment; tempo ... / BPM unknown").
+_ENERGY_DIFFERENCE_FLAG_RE = re.compile(r"\benergy (?:difference|jump)\b", re.I)
+_TEMPO_FLAG_RE = re.compile(r"\b(?:tempo|bpm|beats?|phrase)\b", re.I)
 
 AUDIO_SUFFIXES = (".mp3", ".wav", ".flac", ".m4a", ".aac", ".ogg", ".opus")
 _SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
@@ -983,6 +993,162 @@ def _collect_flagged(b: _Builder, manifest: PlaylistManifest, flagged_out: list[
                   f"transition #{frm} -> #{to} ({kind}) flagged at export: {why}", position=to)
 
 
+def _anchor_slot(anchored, planned_position, length: int) -> int | None:
+    """1-based slot an anchored plan entry must hold in an order of ``length`` tracks:
+    ``position N`` counts from the start, ``position -N`` from the end (``position -1`` =
+    the last track, wherever that is after a failed normalization shortened the output);
+    ``phase X`` anchors are not positional (None). Any other label falls back to the
+    planned position."""
+    text = str(anchored).strip()
+    if text.casefold().startswith("phase"):
+        return None
+    m = _ANCHOR_POSITION_RE.match(text)
+    if m is None:
+        return planned_position if isinstance(planned_position, int) and not isinstance(planned_position, bool) \
+            else None
+    n = int(m.group(1))
+    if n > 0:
+        return n
+    return length + n + 1 if n < 0 else None
+
+
+def _check_plan_violations(b: _Builder, manifest: PlaylistManifest, plan: dict) -> None:
+    """Hard-constraint violations the planner reported (``plan.violations``): a delivery whose
+    plan breaks its scenario is never a silent PASS. Transition kinds (forbidden_pair,
+    tempo_jump, key_jump, energy_jump, artist_gap) reach the manifest as sequencer flags
+    ('plan constraint not met: <message>', ``plan_pipeline.sequence_from_plan``) and are
+    reported by ``_collect_flagged``; one that did not get there (no valid position, an
+    adjacency broken by a failed normalization) and every other kind (anchor, required,
+    phase_anchor, duration, artist_count, same_song, track_count, ...) is a WARNING
+    ``plan_violation`` with the planner's message. A plan without ``violations`` has none."""
+    b.ran("plan_constraints")
+    raw = plan.get("violations")
+    if raw is None:
+        return
+    if not isinstance(raw, list):
+        b.add(Severity.WARNING, "plan_invalid",
+              "manifest.plan.violations is not a list: the plan's hard constraints could not be checked")
+        return
+    flagged = [r for f in manifest.flagged_transitions or [] if isinstance(f, dict)
+               for r in _str_list(f.get("reasons"))]
+    for v in raw:
+        v = v if isinstance(v, dict) else {"message": "malformed violation entry" if v is None else str(v)}
+        kind = str(v.get("kind") or "unknown")
+        message = str(v.get("message") or "").strip()
+        if kind in PLAN_TRANSITION_VIOLATIONS and message:
+            # each flag accounts for ONE violation: two identical messages need two flags
+            hit = next((i for i, r in enumerate(flagged) if message in r), None)
+            if hit is not None:
+                flagged.pop(hit)
+                continue
+        pos = v.get("position")
+        where = f" at planned #{pos}" if isinstance(pos, int) and not isinstance(pos, bool) else ""
+        b.add(Severity.WARNING, "plan_violation",
+              f"the plan breaks a hard constraint of its scenario ({kind}{where}): {message or 'no message recorded'}")
+
+
+def _check_plan(b: _Builder, manifest: PlaylistManifest) -> None:
+    """VEmix 3.0: a delivery rendered from a dramaturgy plan (``manifest.plan``) must play the
+    planned order. A planned track that did not reach the output (normalization failure)
+    shifts everything after it: WARNING, and an anchor that moved is named (``position N``
+    from the start, ``position -N`` from the end; phase anchors are not positional). Any other
+    difference from the plan is a FAIL. Hard-constraint violations the planner reported are
+    WARNINGs (``_check_plan_violations``). Nothing runs for 2.0 manifests (no ``plan``)."""
+    plan = manifest.plan
+    if not isinstance(plan, dict):
+        return
+    planned = [p for p in plan.get("order") or [] if isinstance(p, dict)]
+    if planned:
+        b.add(Severity.INFO, "plan_source",
+              f"rendered from plan '{plan.get('scenario')}' variant {plan.get('variant')} ({plan.get('preset')}), "
+              f"{len(planned)} planned track(s)")
+    _check_plan_violations(b, manifest, plan)
+    if not planned:
+        b.add(Severity.WARNING, "plan_invalid", "manifest.plan has no planned order to check against")
+        return
+    b.ran("plan_order")
+    b.ran("plan_anchors")
+    key = lambda d: d.get("track_id") or d.get("rel_path")                    # noqa: E731
+    published = [t.track_id or t.source_rel for t in manifest.tracks]
+    planned_keys = [key(p) for p in planned]
+    missing = [p for p in planned if key(p) not in set(published)]
+    expected = [k for k in planned_keys if k in set(published)]
+    for p in missing:
+        b.add(Severity.WARNING, "plan_track_missing",
+              f"planned #{p.get('position')} {p.get('display') or p.get('rel_path')!r} (phase {p.get('phase')}) is not "
+              f"in the output; later positions moved up by one", file=p.get("rel_path"))
+    if published != expected:
+        extra = [k for k in published if k not in set(planned_keys)]
+        b.add(Severity.FAIL, "plan_order_mismatch",
+              "the published order differs from the plan"
+              + (f" ({len(extra)} track(s) that are not in the plan)" if extra else ""))
+        return
+    index = {k: i + 1 for i, k in enumerate(published)}
+    for p in planned:
+        if not p.get("anchored") or key(p) not in index:
+            continue
+        want = _anchor_slot(p["anchored"], p.get("position"), len(published))
+        if want is None or index[key(p)] == want:
+            continue
+        if want < 1 or want > len(published):
+            b.add(Severity.WARNING, "plan_anchor_moved",
+                  f"anchored track {p.get('display') or p.get('rel_path')!r} ({p.get('anchored')}) cannot hold that "
+                  f"position in a published order of {len(published)} track(s); it plays at #{index[key(p)]}",
+                  position=index[key(p)])
+            continue
+        in_plan = _anchor_slot(p["anchored"], p.get("position"), len(planned))
+        b.add(Severity.WARNING, "plan_anchor_moved",
+              f"anchored track {p.get('display') or p.get('rel_path')!r} ({p.get('anchored')}) plays at "
+              f"#{index[key(p)]} instead of #{want}"
+              + (f" (the plan itself placed it at #{p.get('position')})" if p.get("position") != in_plan else ""),
+              position=index[key(p)])
+
+
+def _identities(track_id, rel_path) -> set[tuple[str, str]]:
+    """Identity keys of one track (track id and/or library-relative path)."""
+    out: set[tuple[str, str]] = set()
+    if isinstance(track_id, str) and track_id.strip():
+        out.add(("id", track_id.strip()))
+    if isinstance(rel_path, str) and rel_path.strip():
+        out.add(("rel", normalize_rel_path(rel_path)))
+    return out
+
+
+def _planned_contrast_positions(manifest: PlaylistManifest, entries: list[MixTrackEntry]) -> set[int]:
+    """Mix positions whose INCOMING transition is a planned contrast of the scenario
+    (``plan.order[].planned_contrast``): the track and its predecessor in the mix are matched
+    to the planned pair by track id or rel_path (a planned track lost to a failed
+    normalization breaks the pair). Empty for 2.0 manifests (no ``plan``) and for plans
+    without the field."""
+    plan = manifest.plan
+    if not isinstance(plan, dict):
+        return set()
+    order = [p for p in plan.get("order") or [] if isinstance(p, dict)]
+    pairs = [(_identities(a.get("track_id"), a.get("rel_path")), _identities(c.get("track_id"), c.get("rel_path")))
+             for a, c in zip(order, order[1:]) if c.get("planned_contrast") is True]
+    if not pairs:
+        return set()
+    by_index = {t.index: t for t in manifest.tracks or []}
+
+    def ids(e: MixTrackEntry) -> set[tuple[str, str]]:
+        t = by_index.get(e.position)
+        return _identities(t.track_id if t else None, e.source_rel) | (_identities(None, t.source_rel) if t else set())
+
+    out: set[int] = set()
+    for prev, nxt in zip(entries, entries[1:]):
+        pi, ni = ids(prev), ids(nxt)
+        if any(pi & a and ni & c for a, c in pairs):
+            out.add(nxt.position)
+    return out
+
+
+def _energy_only_uncertainty(flags: list[str]) -> bool:
+    """True when the renderer's notes on an uncertain transition name the energy difference
+    and no tempo / BPM / beat / phrase cause."""
+    return (any(_ENERGY_DIFFERENCE_FLAG_RE.search(f) for f in flags)
+            and not any(_TEMPO_FLAG_RE.search(f) for f in flags))
+
+
 def _unknown_metadata(b: _Builder, tracks: list[ManifestTrack]) -> int:
     b.ran("metadata_coverage")
     unknown = [t.index for t in tracks if _features_unknown(t.features or {})]
@@ -1184,6 +1350,7 @@ def qc_playlist(output_dir: Path, normalizer: LoudnessNormalizer, *, profile: Cl
         report.excluded = [dict(x) for x in manifest.excluded or []]
         _list_not_selected(b, manifest)
         _collect_flagged(b, manifest, report.flagged_transitions)
+        _check_plan(b, manifest)
     else:
         for name in ("duplicates", "excluded_tracks", "unpublished_tracks"):
             b.skip(name, "manifest unavailable")
@@ -1621,7 +1788,10 @@ def qc_mix(manifest_path: Path, normalizer: LoudnessNormalizer, *, profile: Clie
               "(the decoded MP3 scan above is authoritative)", file=rel)
 
     # --- renderer peak protection / uncertain transitions ---
+    # The 2.0 transition engine knows nothing about a 3.0 plan: the energy difference INTO a
+    # planned contrast phase is intended (INFO); a tempo / beat cause still needs listening.
     b.ran("peak_protection")
+    contrast_in = _planned_contrast_positions(manifest, entries)
     for tr in transitions:
         flags = [str(x) for x in (tr.flags or [])]
         reasons = []
@@ -1632,11 +1802,21 @@ def qc_mix(manifest_path: Path, normalizer: LoudnessNormalizer, *, profile: Clie
                   f"transition into #{tr.position} at {_fmt_ts(float(tr.overlap_start_s))}: renderer peak "
                   f"protection reduced gain by {abs(gr):.1f} dB — listen to the overlap",
                   position=tr.position, timestamp_s=float(tr.overlap_start_s), file=rel)
-        if tr.uncertain:
+        planned_contrast = tr.position in contrast_in
+        if tr.uncertain and planned_contrast and _energy_only_uncertainty(flags):
+            reasons.append("planned contrast of the scenario (energy change intended)")
+            b.add(Severity.INFO, "planned_contrast_transition",
+                  f"transition into #{tr.position} at {_fmt_ts(float(tr.overlap_start_s))} is a planned contrast "
+                  f"of the scenario; the renderer marked it uncertain for the energy difference only: "
+                  + "; ".join(flags),
+                  position=tr.position, timestamp_s=float(tr.overlap_start_s), file=rel)
+        elif tr.uncertain:
             reasons.append("uncertain transition (no reliable phrase/beat alignment)")
             b.add(Severity.WARNING, "uncertain_transition",
                   f"transition into #{tr.position} at {_fmt_ts(float(tr.overlap_start_s))} is marked uncertain"
-                  + (f": {'; '.join(flags)}" if flags else ""),
+                  + (f": {'; '.join(flags)}" if flags else "")
+                  + (" (planned contrast of the scenario: only its energy change is intended — listen)"
+                     if planned_contrast else ""),
                   position=tr.position, timestamp_s=float(tr.overlap_start_s), file=rel)
         if reasons:
             report.flagged_transitions.append({
@@ -1662,6 +1842,7 @@ def qc_mix(manifest_path: Path, normalizer: LoudnessNormalizer, *, profile: Clie
     report.excluded = [dict(x) for x in manifest.excluded or []]
     _list_not_selected(b, manifest)
     _collect_flagged(b, manifest, report.flagged_transitions)
+    _check_plan(b, manifest)
 
     # --- per-track body loudness inside the mix + adjacent short-term (spec §3) ---
     report.tracks = _mix_track_rows(b, normalizer, qc, mix_path if (decode and decode.ok) else None,
