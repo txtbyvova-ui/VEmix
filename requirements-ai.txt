@@ -1,0 +1,8 @@
+# VEmix 3.0 — OPTIONAL dependency for AI track interpretation through Claude
+# (veg_mixer.ai, provider "anthropic"). Not needed for analysis, playlists, mixes, local
+# OpenAI-compatible servers (Ollama, LM Studio, llama.cpp: stdlib HTTP) or the fake provider.
+# Install: pip install -r requirements-ai.txt
+# Credentials are read by the SDK from the environment (ANTHROPIC_API_KEY / ANTHROPIC_AUTH_TOKEN
+# or an `ant auth login` profile) — never put a key in a file of this repository.
+-r requirements.txt
+anthropic==2.1.0

@@ -215,32 +215,39 @@ def default_profile() -> ClientProfile:
 def load_profile(path: Path) -> ClientProfile:
     """Load and strictly validate a client profile (.yaml/.yml or .json)."""
     path = Path(path)
-    suffix = path.suffix.lower()
-    if suffix not in (".yaml", ".yml", ".json"):
-        raise ProfileError(f"{path}: unsupported profile format '{suffix}' (use .yaml, .yml or .json)")
-    try:
-        text = path.read_text(encoding="utf-8-sig")
-    except (OSError, UnicodeDecodeError) as e:
-        raise ProfileError(f"{path}: cannot read profile: {e}") from e
-    if suffix == ".json":
-        try:
-            data = json.loads(text, object_pairs_hook=_json_no_duplicates)
-        except json.JSONDecodeError as e:
-            raise ProfileError(f"{path}: invalid JSON at line {e.lineno}: {e.msg}") from None
-        except _DuplicateKeyError as e:
-            raise ProfileError(f"{path}: invalid JSON: duplicate key '{e}'") from None
-    else:
-        try:
-            data = yaml.load(text, Loader=_StrictYamlLoader)   # SafeLoader + duplicate-key check
-        except yaml.YAMLError as e:
-            mark = getattr(e, "problem_mark", None)
-            where = f" at line {mark.line + 1}" if mark is not None else ""
-            problem = getattr(e, "problem", None) or str(e).splitlines()[0]
-            raise ProfileError(f"{path}: invalid YAML{where}: {problem}") from None
+    data = load_config_document(path, noun="profile", error=ProfileError)
     profile = parse_profile(data, source=str(path))
     profile.source_path = path
     log.info("profile '%s' loaded from %s", profile.client, path)
     return profile
+
+
+def load_config_document(path: Path, *, noun: str, error: type[ValueError]) -> Any:
+    """Read a curator-edited YAML/JSON document strictly (one reader for profiles and
+    scenarios): UTF-8 with or without BOM, duplicate keys rejected, YAML through the safe
+    loader; every problem is raised as ``error('<file>: ...')`` naming the ``noun``."""
+    path = Path(path)
+    suffix = path.suffix.lower()
+    if suffix not in (".yaml", ".yml", ".json"):
+        raise error(f"{path}: unsupported {noun} format '{suffix}' (use .yaml, .yml or .json)")
+    try:
+        text = path.read_text(encoding="utf-8-sig")
+    except (OSError, UnicodeDecodeError) as e:
+        raise error(f"{path}: cannot read {noun}: {e}") from e
+    if suffix == ".json":
+        try:
+            return json.loads(text, object_pairs_hook=_json_no_duplicates)
+        except json.JSONDecodeError as e:
+            raise error(f"{path}: invalid JSON at line {e.lineno}: {e.msg}") from None
+        except _DuplicateKeyError as e:
+            raise error(f"{path}: invalid JSON: duplicate key '{e}'") from None
+    try:
+        return yaml.load(text, Loader=_StrictYamlLoader)   # SafeLoader + duplicate-key check
+    except yaml.YAMLError as e:
+        mark = getattr(e, "problem_mark", None)
+        where = f" at line {mark.line + 1}" if mark is not None else ""
+        problem = getattr(e, "problem", None) or str(e).splitlines()[0]
+        raise error(f"{path}: invalid YAML{where}: {problem}") from None
 
 
 class _StrictYamlLoader(yaml.SafeLoader):
@@ -404,11 +411,13 @@ def _did_you_mean(name: Any, options) -> str:
 
 @dataclass
 class _Parser:
-    """Validation helpers that raise ProfileError('<file>: <key.path>: <problem>')."""
+    """Validation helpers that raise ProfileError('<file>: <key.path>: <problem>')
+    (the scenario loader reuses them with its own ``error`` class)."""
     source: str
+    error: type[ValueError] = ProfileError
 
     def fail(self, key: str, message: str) -> None:
-        raise ProfileError(f"{self.source}: {key or '<top level>'}: {message}")
+        raise self.error(f"{self.source}: {key or '<top level>'}: {message}")
 
     def mapping(self, value: Any, key: str, allowed: tuple[str, ...] | None) -> None:
         if not isinstance(value, dict):
@@ -638,6 +647,20 @@ def _track_keys(track: TrackFeatures) -> set[str]:
     keys = {rel, name, _norm_title(stem)}
     if track.artist and track.title:
         keys.add(_norm_title(f"{track.artist} - {track.title}"))
+    keys.discard("")
+    return keys
+
+
+def track_match_keys(track: TrackFeatures) -> set[str]:
+    """Keys a list entry can match a track by (library-relative path, file name, file stem
+    and 'Artist - Title', normalized) — the blocklist/allowlist rule, shared with scenarios."""
+    return _track_keys(track)
+
+
+def reference_keys(entry: str) -> set[str]:
+    """Normalized keys of a track reference written by a curator ('Artist - Title', a
+    library-relative path or a file name); a track matches when the key sets intersect."""
+    keys = {rel_path_key(entry), _norm_title(entry)}
     keys.discard("")
     return keys
 

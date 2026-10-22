@@ -11,7 +11,8 @@ Transition scoring — ``transition_score(a, b, cfg)``
     ====================== ===============================================================
     vibe_similarity        mood (1.0 same, 0.7 same mood family, 0.35 adjacent families,
                            0.3 unrelated/unknown vocabulary, 0.0 opposed families) and
-                           Jaccard overlap of ``vibe_tags``; 0.6·mood + 0.4·tags when both
+                           Jaccard overlap of ``vibe_tags`` (3.0 ``role:*`` tags excluded);
+                           0.6·mood + 0.4·tags when both
     energy_continuity      1 − |ΔE| / max_energy_jump (clipped); a jump at the hard limit = 0
     bpm_continuity         1 − Δ / bpm_span, Δ after half/double-time folding (70 ≙ 140)
     harmonic_compatibility 1.0 compatible (legacy rules), 0.5 two wheel steps, 0.0 clash
@@ -177,6 +178,10 @@ KEY_CORRELATION_FULL = 0.9
 MIN_SIMILARITY_COVERAGE = 0.15
 MIN_SIMILARITY_COMPONENTS = 2
 MOOD_WEIGHT_IN_VIBE = 0.6       # vibe = 0.6·mood + 0.4·tag Jaccard when both are known
+# VEmix 3.0 curator role tag ('role:opener' in vibe_tags; dramaturgy.ROLE_TAG_PREFIX): it assigns a
+# scenario role, not a vibe, and is left out of the tag Jaccard so that a curator CSV prepared for
+# 3.0 orders 2.0 playlists / mixes exactly as before. Compared after normalize_tag (case-insensitive).
+ROLE_TAG_PREFIX = "role:"
 SAME_MOOD_FAMILY = 0.7
 ADJACENT_MOOD_FAMILY = 0.35
 UNRELATED_MOOD = 0.3            # different labels whose relation we cannot judge (not in the table)
@@ -342,7 +347,9 @@ def _bpm_of(t: TrackFeatures) -> float | None:
 
 
 def _tags_of(t: TrackFeatures) -> frozenset[str]:
-    return frozenset(x for x in (_norm_label(v) for v in (t.vibe_tags or [])) if x)
+    """Normalized vibe tags of a track (the tag Jaccard of both scorers), without 3.0 role tags."""
+    return frozenset(x for x in (_norm_label(v) for v in (t.vibe_tags or []))
+                     if x and not x.startswith(ROLE_TAG_PREFIX))
 
 
 def auto_key_confidence(correlation: float | None) -> float:
@@ -656,9 +663,12 @@ class DaypartFit:
 
 def _labels(t: TrackFeatures) -> set[str]:
     """Normalized labels of a track as curation sees them (textnorm.label_keys: whole values
-    and the parts of multi-valued ones) plus alias-resolved genre parts ('rnb' → 'r&b')."""
+    and the parts of multi-valued ones) plus alias-resolved genre parts ('rnb' → 'r&b').
+    3.0 role tags ('role:peak') are scenario instructions, not labels: left out, so the
+    daypart fit of 2.0 commands does not change when a curator adds them."""
     out: set[str] = set()
-    for r in [*(t.vibe_tags or []), t.genre, t.mood]:
+    tags = [v for v in (t.vibe_tags or []) if not (_norm_label(v) or "").startswith(ROLE_TAG_PREFIX)]
+    for r in [*tags, t.genre, t.mood]:
         out |= label_keys(r)
     out.update(_genre_parts(t.genre))
     return out

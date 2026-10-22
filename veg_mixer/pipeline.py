@@ -113,6 +113,8 @@ class LibraryAnalysis:
     warnings: list[str] = field(default_factory=list)
     measurements: dict[str, LoudnessMeasurement] = field(default_factory=dict)   # track_id ->
     probes: dict[str, AudioProbe] = field(default_factory=dict)                  # track_id ->
+    # VEmix 3.0 segment analysis (audio_intel), only when requested: track_id -> value
+    segments: dict[str, dict] = field(default_factory=dict)
 
     @property
     def broken_as_excluded(self) -> list[dict]:
@@ -159,7 +161,11 @@ def default_seed(*parts: str | None) -> int:
 
 def analyze_library(ctx: RunContext, folder: Path, *, cache_arg: str | None = None, recursive: bool = False,
                     metadata_path: Path | None = None, measure_loudness: bool = True,
-                    exclude: list[Path] | tuple[Path, ...] = ()) -> LibraryAnalysis:
+                    exclude: list[Path] | tuple[Path, ...] = (), segments: str = "off") -> LibraryAnalysis:
+    """Analyse the library (cached). ``segments`` (VEmix 3.0): 'off' (default, 2.0 behaviour),
+    'cache' (use cached segment analysis only) or 'compute' (compute what is missing)."""
+    if segments not in ("off", "cache", "compute"):
+        raise ValueError(f"segments must be off, cache or compute, got {segments!r}")
     folder = Path(folder).resolve()
     if not folder.is_dir():
         raise FileNotFoundError(f"--folder '{folder}' does not exist or is not a directory")
@@ -174,17 +180,25 @@ def analyze_library(ctx: RunContext, folder: Path, *, cache_arg: str | None = No
     analyzer = TrackAnalyzer(ctx.tools, cache, ctx.config.analysis, ctx.normalizer)
 
     analyzed: list[AnalyzedTrack | None] = [None] * len(files)
+    seg_values: list[dict | None] = [None] * len(files)
+    seg_state: list[str] = [""] * len(files)
 
     def work(i: int) -> None:
         at = analyzer.analyze(files[i], folder, measure_loudness=measure_loudness)
         analyzed[i] = at
+        if segments != "off" and at.ok:
+            from .audio_intel import analyze_segments
+            value, hit = analyze_segments(at.features.path, cache, tools=ctx.tools, compute=segments == "compute")
+            seg_values[i] = value if value and not value.get("error") else None
+            seg_state[i] = ("seg:cache" if hit else "seg:new") if seg_values[i] else (
+                "seg:none" if value is None else "seg:failed")
         f = at.features
         status = "ERROR " + "; ".join(at.errors) if at.errors else (
             f"BPM {_fmt(f.bpm, '6.1f')}  Key {f.camelot or '?':<4}  "
             f"E {_fmt(f.energy, '.2f')}  "
             + (f"{at.loudness.integrated_lufs:6.1f} LUFS {at.loudness.true_peak_dbtp:+5.1f} dBTP" if at.loudness else ""))
         cached = "cache" if at.from_cache and all(at.from_cache.values()) else ""
-        ctx.out(f"  [{i + 1}/{len(files)}] {f.rel_path}  {status} {cached}".rstrip())
+        ctx.out(f"  [{i + 1}/{len(files)}] {f.rel_path}  {status} {cached} {seg_state[i]}".rstrip())
 
     try:
         if ctx.jobs > 1:
@@ -226,20 +240,25 @@ def analyze_library(ctx: RunContext, folder: Path, *, cache_arg: str | None = No
         ctx.out(f"  {len(broken)} file(s) could not be analysed (reported, not silently skipped):")
         for a in broken:
             ctx.out(f"    - {a.features.rel_path}: {'; '.join(a.errors)}")
-    return LibraryAnalysis(folder, done, tracks, broken, auto_tracks, warnings, measurements, probes)
+    seg_map = {a.features.track_id: v for a, v in zip(analyzed, seg_values) if a is not None and v is not None}
+    return LibraryAnalysis(folder, done, tracks, broken, auto_tracks, warnings, measurements, probes, seg_map)
 
 
 def run_analyze(ctx: RunContext, folder: Path, *, cache_arg=None, recursive=False, metadata_path=None,
-                export_path: Path | None = None, measure_loudness: bool = True) -> int:
+                export_path: Path | None = None, measure_loudness: bool = True, segments: bool = False) -> int:
     exclude = [Path(export_path)] if export_path else []
     lib = analyze_library(ctx, folder, cache_arg=cache_arg, recursive=recursive,
-                          metadata_path=metadata_path, measure_loudness=measure_loudness, exclude=exclude)
+                          metadata_path=metadata_path, measure_loudness=measure_loudness, exclude=exclude,
+                          segments="compute" if segments else "off")
     unknown = {name: sum(1 for t in lib.tracks if getattr(t, name) in (None, "", []))
                for name in ("bpm", "camelot", "energy", "mood", "genre", "language", "familiarity")}
     ctx.out("")
     ctx.out(f"Analysed: {len(lib.tracks)} ok, {len(lib.broken)} broken")
     ctx.out("Unknown values (stay unknown until curated): "
             + ", ".join(f"{k}={v}" for k, v in unknown.items()))
+    if segments:
+        ctx.out(f"Segment analysis (energy over time, density, structure): {len(lib.segments)} of "
+                f"{len(lib.tracks)} track(s)" + ("  [dry run: computed, not cached]" if ctx.dry_run else ""))
     scripts = sum(1 for t in lib.tracks if t.script_hint)
     if scripts:
         ctx.out(f"Tracks with a non-Latin script hint (language unverified): {scripts}")
@@ -594,7 +613,8 @@ def _split_parts(seq: SequenceResult, parts: int) -> list[SequenceResult]:
     return chunks
 
 
-def _render_one_mix(ctx: RunContext, sel: Selection, seq: SequenceResult, out: Path, seed: int) -> OverallStatus:
+def _render_one_mix(ctx: RunContext, sel: Selection, seq: SequenceResult, out: Path, seed: int,
+                    plan: dict | None = None) -> OverallStatus:
     normalizer = ctx.normalizer
     out.parent.mkdir(parents=True, exist_ok=True)
     work_parent = ctx.work_dir or Path(tempfile.gettempdir())
@@ -705,7 +725,7 @@ def _render_one_mix(ctx: RunContext, sel: Selection, seq: SequenceResult, out: P
             not_selected=sel.not_selected.get(seq.daypart, []),
             warnings=[f"{e['source_rel']}: {'; '.join(e['reasons'])}" for e in failed_excluded]
             + ([f"final mix not published: {e}" for e in final.errors] if not published else []),
-            mix=mix_info)
+            mix=mix_info, plan=plan)
         atomic_write_json(manifest_path, manifest.to_dict())
     finally:
         shutil.rmtree(work, ignore_errors=True)
@@ -779,6 +799,10 @@ def normalizer_for_manifest(ctx: RunContext, manifest_file: Path) -> LoudnessNor
 # ---------------------------------------------------------------------------
 
 EXIT_OK, EXIT_FAIL, EXIT_USAGE, EXIT_ENV, EXIT_WARNING, EXIT_RUNTIME = 0, 1, 2, 3, 4, 5
+
+
+class OptionalDependencyError(ImportError):
+    """An optional package (the anthropic SDK) is missing: an environment problem (EXIT_ENV)."""
 
 
 def exit_code(status: OverallStatus | None) -> int:

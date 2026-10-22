@@ -19,3 +19,7 @@ bpm_cache.json
 
 # keep the example QC report
 !examples/**
+
+# VEmix 3.0 caches (research facts, AI interpretations)
+veg_research_cache*.json
+veg_ai_cache*.json

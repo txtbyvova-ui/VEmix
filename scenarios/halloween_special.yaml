@@ -1,0 +1,142 @@
+# =============================================================================
+# VEmix 3.0 — сценарий плейлиста «Halloween Special»
+#
+#   python automix.py plan --folder ./halloween_music --scenario ./scenarios/halloween_special.yaml --save plan.json
+#
+# Сценарий — РЕДАКЦИОННЫЙ ввод, как профиль клиента: он описывает драматургию (фазы,
+# кривую энергии, роли, настроения, допуски), а не конкретные треки. Название трека
+# встречается только в якоре ниже; алгоритм ничего не знает про Хэллоуин.
+#
+# Шкала энергии — та же, что у TrackFeatures.energy (0..1): куратор (CSV) или эвристика
+# анализа с пониженной уверенностью. Числа ниже — отправная точка, их стоит подстроить
+# под библиотеку (отчёт `plan` показывает отклонение каждого трека от кривой).
+#
+# Синтаксис как у профиля: опечатка в ключе — ошибка с подсказкой, yes/no без кавычек
+# YAML читает как true/false, время — в минутах числом (не '1:30').
+# =============================================================================
+
+scenario: halloween_special
+description: >
+  Хэллоуин-спешл: Michael Jackson — Thriller строго первым треком, затем постепенное
+  нарастание, первый пик, зловещая передышка, второй разгон, кульминация и
+  контролируемый спад к тихому мистическому финалу.
+
+target_duration_min: 60          # целевая длительность (по длительностям исходников)
+duration_tolerance_min: 4        # допустимое отклонение; за его пределами — нарушение
+alternatives: 3                  # сколько вариантов строить (1..6) — для сравнения
+# seed: 31                       # без seed план и так воспроизводим: seed выводится из имени
+#                                # сценария (ключ scenario). Число даёт другой, тоже детерминированный
+#                                # набор вариантов и не зависит от переименования; --seed в CLI важнее.
+
+# --- жёсткие якоря: трек на конкретной позиции (1 = первый, -1 = последний)
+#     или внутри фазы (phase: climax). Якорь, которого нет в библиотеке или который
+#     исключён профилем клиента, — ошибка (жёсткое ограничение не отбрасывается молча).
+anchors:
+  - track: "Michael Jackson - Thriller"
+    position: 1
+
+required: []                     # обязательные треки на любой позиции
+excluded: []                     # треки, которые нельзя ставить
+
+# --- соседство: forbid — никогда рядом (жёстко); avoid / prefer — мягкие предпочтения
+adjacency:
+  forbid: []
+  avoid: []
+  prefer: []
+
+# --- фазы: share — относительная длительность (нормируется к сумме),
+#     energy — целевая энергия в начале и в конце фазы (кривая по относительному ВРЕМЕНИ),
+#     energy_range — допустимый коридор (мягкий штраф за выход), roles — нужные роли,
+#     moods.prefer / moods.avoid — предпочтительные и нежелательные настроения,
+#     contrast: true — на ВХОДЕ в фазу разрешён контролируемый контраст (больший скачок энергии).
+phases:
+  - name: intro
+    share: 0.08
+    energy: [0.70, 0.66]
+    roles: [opener]
+    moods: {prefer: [playful, spooky, theatrical]}
+    description: Thriller — узнаваемое открытие (якорь)
+
+  - name: build
+    share: 0.20
+    energy: [0.48, 0.70]
+    energy_range: [0.35, 0.80]
+    roles: [tension_builder, groove_builder]
+    moods: {prefer: [mysterious, tense, playful, campy]}
+    description: постепенное нарастание после яркого старта
+
+  - name: first_peak
+    share: 0.12
+    energy: [0.78, 0.84]
+    roles: [peak, release]
+    moods: {prefer: [euphoric, energetic, playful]}
+
+  - name: breather
+    share: 0.13
+    energy: [0.36, 0.30]
+    energy_range: [0.15, 0.50]
+    roles: [breather]
+    moods:
+      prefer: [ominous, eerie, mysterious, haunting]
+      avoid: [euphoric, cheerful, happy]
+    contrast: true
+    description: зловещая передышка — контраст после пика разрешён
+
+  - name: second_build
+    share: 0.17
+    energy: [0.45, 0.78]
+    roles: [tension_builder, groove_builder]
+    moods: {prefer: [tense, sinister, suspenseful, driving]}
+
+  - name: climax
+    share: 0.14
+    energy: [0.86, 0.92]
+    energy_range: [0.70, 1.00]
+    roles: [peak]
+    moods: {prefer: [euphoric, intense, energetic, menacing]}
+
+  - name: descent
+    share: 0.10
+    energy: [0.68, 0.42]
+    roles: [comedown, release]
+    moods: {prefer: [dark, mysterious, dramatic]}
+    description: контролируемый спад — без резких скачков (лимит ниже)
+
+  - name: closer
+    share: 0.06
+    energy: [0.34, 0.28]
+    roles: [closer]
+    moods: {prefer: [ominous, eerie, haunting]}
+
+# --- настроения для всего сценария (добавляются к настроениям фаз)
+moods:
+  prefer: [spooky, ominous, mysterious, playful]
+  avoid: [romantic, sentimental, melancholic]
+
+# --- допуски переходов. Темп и тональность — ЖЁСТКИЕ, только если оба значения известны
+#     с достаточной уверенностью (темп ≥ 0.45 — авто-BPM 0.5 проходит, если сегментный анализ
+#     в нём не сомневается; тональность ≥ 0.6). Авто-тональность ВСЕГДА ниже порога (≤ 0.5
+#     после калибровки), поэтому жёстким лимит тональности бывает только для ключей куратора
+#     (ручной camelot / key_confidence в CSV). Превышение лимита при низкой уверенности —
+#     не нарушение: переход по-прежнему штрафуется мягко (слагаемые tempo / harmony), а отчёт
+#     добавляет к нему предупреждение «… — not enforced».
+transitions:
+  max_bpm_jump: 14               # разница BPM с учётом half/double-time (70 ≙ 140)
+  # шагов по колесу Camelot (+1 за смену лада); null — без лимита. Авто-тональности жёстким
+  # лимитом не считаются (низкая уверенность), поэтому лимит имеет смысл при ручных ключах в CSV;
+  # гармония в любом случае учитывается мягко (слагаемое harmony целевой функции).
+  max_key_steps: null
+  max_energy_jump: 0.30          # скачок энергии между соседями
+  contrast_energy_jump: 0.55     # лимит при входе в фазу с contrast: true
+  contrast_bpm_jump: null        # на входе в contrast-фазу темп может резко смениться (null — без лимита)
+
+# --- разнообразие и повторы
+diversity:
+  artist_min_gap: 3              # минимум треков между двумя треками одного артиста
+  max_tracks_per_artist: 2
+  avoid_same_song: true          # одна версия песни на план (оригинал/ремикс/ремастер)
+
+# --- веса целевой функции (по умолчанию — scenario.DEFAULT_WEIGHTS); пример:
+weights:
+  curve: 3.5                     # кривая энергии здесь важнее среднего
+  mood: 1.4
